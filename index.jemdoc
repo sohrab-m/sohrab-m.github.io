@@ -10,25 +10,8 @@ Member of [https://synrg.csl.illinois.edu/ SyNRG] graduate group at UIUC \n
 ~~~ 
 
 == Research Interests
-Machine and Reinforcement Learning, Robust and Distributed Optimal Control, Convex Optimization, Cyber-Physical Systems, Software Defined Networking
+ Wireless Networking, Machine Learning in RF Sensing, Millimeter-wave and 5G Networks
 
-
-== Research Overview
-Machine learning techniques - bolstered by successes in video games, sophisticated robotic simulations, and Go – are now being applied to plan and
-control the behavior of autonomous systems interacting with physical environments. Such systems, which include self-driving vehicles, distributed sensor
-networks, and agile robots, must interact with complex environments that
-are ever changing and difficult to model, strongly motivating the use of data-driven decision making and control. However, if machine learning techniques
-are to be applied in these new settings, it is critical that they be accompanied
-by guarantees of reliability, robustness, and safety, as failures could be catastrophic. To address these challenges, my research is focused on developing learning-based control strategies for the design of safe and robust autonomous networked systems. Please see my publications page for current research projects, and the talks below for an accessible introduction (aimed at a general engineering audience) to some of the ideas behind my work.  The first talk (given as part of the Everhart Lecture Series at Caltech) focusses on more control theoretic ideas, whereas the second (given as part of the SILO seminar series at UW-Madison) presents a high-level overview of my approach to integrating machine learning into safety critical control loops.
-
-~~~
-{}{raw}
-<center>
-<iframe width="420" height="236.25" src="https://www.youtube.com/embed/lS-Y5iVNQ-U" frameborder="0" allowfullscreen></iframe>
-
-<iframe src="https://player.vimeo.com/video/319035651?color=b80013&title=0&byline=0&portrait=0" width="420" height="236" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></center>
-
-~~~
 
 == News
 
