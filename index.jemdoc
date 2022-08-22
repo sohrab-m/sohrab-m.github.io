@@ -16,39 +16,4 @@ Member of [https://synrg.csl.illinois.edu/ SyNRG] graduate group at UIUC \n
 == News
 
 
-~~~
-{}{raw}
-
-<a  height = "300" width="600" class="twitter-timeline" href="https://twitter.com/NikolaiMatni?ref_src=twsrc%5Etfw">Tweets by NikolaiMatni</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-~~~
-    - Paper on Evaluating Robust, Perception Based Controllers with Quadrotors accepted to IROS 2020! Stay tuned for the preprint!
-    - Papers on [https://arxiv.org/abs/1907.03680 Robust Perception Based Control] and the [https://arxiv.org/abs/1912.12309 Sample Complexity of Kalman Filtering for Unknown System] accepted to [https://sites.google.com/berkeley.edu/l4dc/home?authuser=0 L4DC 2020]!  Our KF paper will be one of 14 oral spotlight presentations!
-    - *Dec 11-13:* I will be giving a [cdc2019tutorial.html tutorial] on self-tuning control and reinforcement learning at CDC 2019 in Nice, France!
-    - *Nov 21:* I will be discussing recent developments, challenges, and new opportunities in data-driven control and optimization of CPS at the [https://cps-vo.org/group/cps-pimtg19/mini-workshops Mini-Workshop on Learning for Control] at the 2019 NSF CPS PI Meeting. 
-    - I am serving on the program comittees for [https://berkeleylearnverify.github.io/HSCC_2020/ HSCC 2020] and [https://sites.google.com/berkeley.edu/l4dc/home?authuser=0 L4DC 2020].
-    - *Nov 4:* Presenting our work on safety and robusntess guarantees with learning in the loop as part of the [http://people.ee.ethz.ch/~floriand/docs/Teaching/ControlSeminarSeries/CSS_2019_Fall.pdf ETHz Control Seminar Series], at ETH Zurich. 
-    - *Oct 16:* Presenting our work on safety and robustness guaranteees with learning in the loop at the [https://lcsr.jhu.edu/ LCSR] at John Hopkins University. 
-    - *Oct 14-15:* Attending the NSF-sponsored [https://wordpress.lehigh.edu/indisc/tripods-x-lehighu/workshop-two/ Robot Learning Workshop] at Lehigh University to present our work on [https://arxiv.org/abs/1907.03680 robust guarantees for perception based control]. ([https://lehighonline.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=2e2b18e4-749d-4b4e-8260-aae70125df50 Presentation Video])
-    - *Sep 24-26:* Attending Allerton to present our work on efficient learning of distributed controllers.
-    - New papers on [https://arxiv.org/abs/1909.10074 distributed MPC using SLS], [https://arxiv.org/abs/1909.10092 robust performance guarantees for SLS], and [https://arxiv.org/abs/1909.09895 efficient learning of distributed controllers].
-    - *May 30-31:* Attending the inaugural [https://l4dc.mit.edu/ Learning for Dynamics and Control] at MIT
-    - Our paper *A System Level Approach to Controller Synthesis* is accepted for publication in IEEE TAC
-    - *Dec 13-18:* IEEE CDC 2018, Miami, FL 
-    - *Dec 2-8:* NeurIPS, Montreal, Canada
-
-
-~~~
-{}{raw}
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49484039-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-49484039-2');
-</script>
-
-~~~
 
