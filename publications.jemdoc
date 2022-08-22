@@ -2,3 +2,30 @@
 = Sohrab Madani -- Publications \n
 Electrical and Computer Engineering, University of Illinois at Urbana-Champaign
 
+== papers
+- \[*ECCV '22*\] *Radatron: Accurate Detection Using Multi-Resolution Cascaded MIMO Radar*,  \n
+    *Sohrab Madani*\*, Junfeng Guan\*, Waleed Ahmed\*, Saurabh Gupta, Haitham Hassanieh \n
+    \[PDF coming soon\], 
+    \[[https://jguan.page/Radatron/ Website]\], 
+    \[[https://www.youtube.com/watch?v=bvwLgV3u720&t=2s Git]\]
+- \[*NSDI '22*\] *Enabling IoT Self-Localization Using Ambient 5G Signals* \n
+    Suraj Jog, Junfeng Guan, *Sohrab Madani*, Songbin Gong, Deepak Vasisht, Haitham Hassanieh et.al. \n
+  \[[./papers/nsdi22_ISLA.pdf PDF]\], \[[./papers/jog_nsdi22_isla.pdf Slides]\], \[[https://www.youtube.com/watch?v=f2nRNkxNr88 Video]\]
+- \[*NSDI '21*\] *Practical Null Steering in Millimeter Wave Networks* \n
+    *Sohrab Madani*, Suraj Jog, Haitham Hassanieh \n
+    \[[./papers/nsdi21_madani.pdf PDF]\],
+     \[[nsdi21_slides_madani Slides]\],
+      \[[https://www.youtube.com/watch?v=-kH7qMrV8B0&ab_channel=USENIX Video]\]
+      \[[https://gitlab.engr.illinois.edu/smadani2/nulling-python Git]\]
+- \[*IMWUT '21*\] *WiStress: Contactless stress monitoring using wireless signal* \n
+    Unsoo Ha\*, *Sohrab Madani*\*, Fadel Adib \n
+    \[[https://dl.acm.org/doi/pdf/10.1145/3478121 PDF]\]
+- \[*CVPR '20*\] *Through Fog High Resolution Imaging Using Millimeter Wave Radar* \n
+    Junfeng Guan, *Sohrab Madani*, Suraj Jog, Haitham Hassanieh \n
+    \[[./papers/cvpr2020_hawkeye.pdf PDF]\], 
+    \[[https://jguan.page/HawkEye/ Website]\], 
+    \[[https://github.com/JaydenG1019/HawkEye-Data-Code Git]\]\n
+
+\[* indicates co-first authors.\]
+== Patents
+- 
