@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>ESE 605, Spring 2020 &ndash; Modern Convex Optimization</title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">ESE 605, Sp20</div>
+<div class="menu-item"><a href="index.html">home</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>ESE 605, Spring 2020 &ndash; Modern Convex Optimization</h1>
+</div>
+<p><b>Instructor:</b> Nikolai Matni (<a href="mailto:nmatni@seas.upenn.edu">nmatni@seas.upenn.edu</a>), Assistant Professor, ESE Department</p>
+<p><b>TAs:</b> Shaoru Chen (<a href="mailto:srchen@seas.upenn.edu">srchen@seas.upenn.edu</a>), Han Wang (<a href="mailto:wanghan2@sas.upenn.edu">wanghan2@sas.upenn.edu</a>), Alexandre Amice (<a href="mailto:amice@seas.upenn.edu">amice@seas.upenn.edu</a>) </p>
+<p><b>Lectures:</b> Tu/Th 3:00-4:30pm in LRSM Auditorium</p>
+<p><b>Syllabus</b>: <a href="./Syllabus.pdf">ESE605-001</a></p>
+<p><b>If you are trying to register for the course:</b> submit your request at <a href="https://docs.google.com/forms/d/e/1FAIpQLSermt9JnMJxRLoDkMkgvoCBtUnZD5XUkrQXhw-lz5G4LHbb4A/viewform">Permit Requests</a></p>
+<h2>Office hours</h2>
+<ul>
+<li><p><b>Nikolai's OHs:</b> Tu/Th 4:30-5:30pm, Levine 374</p>
+</li>
+<li><p><b>Shaoru's OHs:</b> Fr 12:00-1:30pm, Moore 317</p>
+</li>
+<li><p><b>Han's OHs:</b> Mon 2:00-4:00pm, Moore 317</p>
+</li>
+<li><p><b>Alexandre's OHs:</b> Wed 2:30-4:30pm, Moore 317</p>
+</li>
+</ul>
+<h2>Course description</h2>
+<p>In this course, you will learn to recognize and solve convex optimization problems that arise in applications across engineering, statistics, operations research, and finance.  Examples will be chosen to illustrate the breadth and power of convex optimization, ranging from systems and control theory, to estimation, data fitting, information theory, and machine learning.  A tentative list, subject to change, of what we will cover includes: convex sets, functions, and optimization problems; the basics of convex analysis; least-squares, linear and quadratic programs, semidefinite programs, minimax, extremal volume, and other problems; optimality conditions, duality theory, theorems of alternatives, and applications; interior-point algorithms for solving convex optimization problems, and their complexity analysis; applications to signal processing, statistics and machine learning, control, digital and analog circuit design, and finance. </p>
+<h2>Course objectives</h2>
+<ul>
+<li><p>to give students the tools and skills needed to identify convex optimization problems that arise in applications</p>
+</li>
+<li><p>to introduce the basic theory of convex optimization problems, concentrating on results that are useful in understanding, improving, and extending computational methods</p>
+</li>
+<li><p>to give students a deep and foundational understanding of how such problems are solved, and hands on experience in solving them</p>
+</li>
+<li><p>to give students the background needed to feel comfortable in applying these methods in their own research work and/or applications</p>
+</li>
+</ul>
+<h2>About the Course</h2>
+<h3>Prerequisites</h3>
+<p>This is a math intensive course.  A solid foundation in linear algebra (at the level of Math 314), as well as comfort with analysis, probability, and statistics at an advanced undergraduate level is required.  Familiarity with one of Matlab, Python, or Julia.  Undergraduates need permission. </p>
+<h3>Intended audience</h3>
+<p>This course will benefit anyone who uses or will use scientific computation or optimization in engineering, statistics, signal processing, or related work (e.g., machine learning, finance).  More specifically, convex optimization problems are likely to pop up in the work of people in the following departments and fields: Electrical Engineering (signal/image processing, communications, control), Aero/Astro Engineering (guidance, navigation, control, design), Mechanical &amp; Civil Engineering (robotics, control, structural analysis), Computer Science (machine learning, robotics, computer graphics, algorithms &amp; complexity, computer networking), &amp; Operations Research (Wharton).</p>
+<h3>Schedule</h3>
+<p><b>Please use the following updated schedule and grading, which starts with Week 1 after Spring Break, for the rest of the semester.  The previous course schedule can be found below for your reference.</b></p>
+<table id="SCHEDULE">
+<tr class="r1"><td class="c1">Date          </td><td class="c2"> Topic          </td><td class="c3"> Reading </td><td class="c4"> Homework </td></tr>
+<tr class="r2"><td class="c1">Week 1 <br /> 3/24, 3/26 </td><td class="c2"> <a href="lecture-slides/duality.pdf">Duality</a></td><td class="c3"> Chapter 5 </td><td class="c4">  <a href="hw/ese605hw6.pdf">Homework 6</a> <b>(due 4/06)</b> </td></tr>
+<tr class="r3"><td class="c1">Week 2<br /> 3/31, 04/02 </td><td class="c2"> <a href="lecture-slides/approx.pdf">Approximation and fitting</a><br /> <a href="lecture-slides/stat.pdf">Statistical estimation</a> </td><td class="c3"> Chapter 6, Chapter 7 </td><td class="c4"> No new homework </td></tr>
+<tr class="r4"><td class="c1">Week 3<br /> 4/07, 4/09 </td><td class="c2"> <a href="lecture-slides/stat.pdf">Statistical Estimation</a> <br /> <a href="lecture-slides/geom.pdf">Geometric problems</a></td><td class="c3"> Chapters 7, 8 </td><td class="c4"> <a href="hw/ese605hw7.pdf">Homework 7</a> <b>(due 4/20)</b> </td></tr>
+<tr class="r5"><td class="c1">Week 4<br /> 4/14, 4/16 </td><td class="c2"> <a href="lecture-slides/unconstrained.pdf">Unconstrained minimization</a> </td><td class="c3"> Appendix C, Chapter 9</td><td class="c4"> No new homeowrk </td></tr>
+<tr class="r6"><td class="c1">Week 5<br /> 4/21, 4/23 </td><td class="c2"> <a href="lecture-slides/equality.pdf">Equality constrained minimization</a> </td><td class="c3"> Chapter 10</td><td class="c4"> <a href="hw/ese605hw8.pdf">Homework 8</a> <b>(due 4/29)</b> (will be shorter) </td></tr>
+<tr class="r7"><td class="c1">Week 6<br /> 4/28 </td><td class="c2"> <a href="lecture-slides/barrier.pdf">Interior-point methods</a></td><td class="c3"> Chapter 11</td><td class="c4"> no new homework </td></tr>
+<tr class="r8"><td class="c1">4/30-5/03 </td><td class="c2"> Reading days </td><td class="c3"> &ndash; </td><td class="c4"> &ndash; </td></tr>
+<tr class="r9"><td class="c1">05/05 </td><td class="c2"> Likely date for take home final</td><td class="c3"> N/A </td><td class="c4"> <b>Final exam</b>
+</td></tr></table>
+<h3>Grading</h3>
+<ul>
+<li><p>Homework (20%): there will be weekly homework assignments, handed out on Tuesday, and due the following Friday by 5pm.  The homework assignments <b>must be LateXed and submitted on Canvas via Gradescope</b>.  Please use the <a href="https://web.stanford.edu/class/ee364b/latex_templates/">LaTeX templates</a> provided by Stephen Boyd's EE364b course, and follow the recommended style guide.  You will be given <b>5 free late days</b> which you may use as you please throughout the semester, after which no late assignments will be accepted.  You are allowed, even encouraged, to work on homework in small groups, but you must write up your own homework solutions and code to hand in.  Homework will be graded on a scale of 0-4.</p>
+</li>
+<li><p>Midterm exam (30%): there will be an in-class, 75 minute, closed book, closed notes midterm scheduled for <b>3/03</b>.</p>
+</li>
+<li><p><b>Final take-home exam (50%): there will be a 24 hour final take-home exam scheduled during the final exam period.  We have tentatively scheduled this for 5/05.</b>  Please refer to the <a href="http://web.stanford.edu/class/ee364a/final.html">Stanford EE364a</a> offering of this course for an idea of what the final exam will look like, as well as the logistics of how it will be administered.</p>
+</li>
+</ul>
+<p>Note that these weights are approximate, and we reserve the right to change them later.</p>
+<p><b>Code of Academic Integrity:</b> All students are expected to adhere to the University’s <a href="https://catalog.upenn.edu/pennbook/code-of-academic-integrity/">Code of Academic Integrity</a>.  </p>
+<p><br /></p>
+<h3>Previous schedule</h3>
+<p>The following schedule is tentative and subject to change.  </p>
+<table id="SCHEDULE">
+<tr class="r1"><td class="c1">Date          </td><td class="c2"> Topic          </td><td class="c3"> Reading </td><td class="c4"> Homework </td></tr>
+<tr class="r2"><td class="c1">Week 1<br /> 1/16 </td><td class="c2"> <a href="lecture-slides/logistics.pptx">Logistics</a>, <a href="lecture-slides/intro.pdf">Introduction</a>   </td><td class="c3"> Chapter 1<br /> Appendix A</td><td class="c4"> Sign up for Canvas &amp; Piazza </td></tr>
+<tr class="r3"><td class="c1">Week 2<br /> 1/21, 1/23 </td><td class="c2"> <a href="lecture-slides/sets.pdf">Convex sets</a> </td><td class="c3"> Chapter 2</td><td class="c4"> <a href="hw/ese605hw1.pdf">Homework 1</a> (due 1/31) </td></tr>
+<tr class="r4"><td class="c1">Week 3<br /> 1/28, 1/30 </td><td class="c2"> <a href="lecture-slides/functions.pdf">Convex functions</a> </td><td class="c3"> Chapter 3 </td><td class="c4"> <a href="hw/ese605hw2.pdf">Homework 2</a> (due 2/07) </td></tr>
+<tr class="r5"><td class="c1">Week 4<br /> 2/04, 2/06 </td><td class="c2"> <a href="lecture-slides/problems.pdf">Convex optimization problems</a> </td><td class="c3"> Chapter 4 </td><td class="c4"> <a href="hw/ese605hw3.pdf">Homework 3</a> (due 2/14) </td></tr>
+<tr class="r6"><td class="c1">Week 5<br /> 2/11, 2/13 </td><td class="c2"> <a href="lecture-slides/problems.pdf">Convex optimization problems</a><br /> <a href="lecture-slides/duality.pdf">Duality</a></td><td class="c3"> Chapter 4, 5 </td><td class="c4"> <a href="hw/ese605hw4.pdf">Homework 4</a> (due 2/21) </td></tr>
+<tr class="r7"><td class="c1">Week 6<br /> 2/18, 2/20 </td><td class="c2"> <a href="lecture-slides/duality.pdf">Duality</a></td><td class="c3"> Chapter 5 </td><td class="c4"> <a href="hw/ese605hw5.pdf">Homework 5</a> <b>(due 03/10)</b> </td></tr>
+<tr class="r8"><td class="c1">Week 7<br /> 2/25, 2/27 </td><td class="c2"> <a href="lecture-slides/approx.pdf">Approximation and fitting</a> </td><td class="c3"> Chapter 6 </td><td class="c4"> <b>Midterm on 3/03</b> </td></tr>
+<tr class="r9"><td class="c1">Week 8<br /> 3/03, 3/05 </td><td class="c2"> <a href="lecture-slides/stat.pdf">Statistical estimation</a> </td><td class="c3"> Chapter 7 </td><td class="c4"> Homework 6 (due 3/20) </td></tr>
+<tr class="r10"><td class="c1">Spring break </td><td class="c2"> relax </td><td class="c3"> have fun </td><td class="c4"> get some rest </td></tr>
+<tr class="r11"><td class="c1">Week 9<br /> 3/17, 3/19 </td><td class="c2"> <a href="lecture-slides/stat.pdf">Statistical Estimation</a> <br /> <a href="lecture-slides/geom.pdf">Geometric problems</a></td><td class="c3"> Chapters 7, 8 </td><td class="c4"> Homework 7 (due 3/27) </td></tr>
+<tr class="r12"><td class="c1">Week 10<br /> 3/24, 3/26 </td><td class="c2"> <a href="lecture-slides/geom.pdf">Geometric problems</a><br /> <a href="lecture-slides/num-lin-alg.pdf">Numerical Linear Algebra Review</a></td><td class="c3"> Chapter 8<br /> Appendix C </td><td class="c4"> Homework 8 (due 4/03) </td></tr>
+<tr class="r13"><td class="c1">Week 11<br /> 3/31, 4/02 </td><td class="c2"> <a href="lecture-slides/unconstrained.pdf">Unconstrained minimization</a> </td><td class="c3"> Chapter 9</td><td class="c4"> Homework 9 (due 4/10) </td></tr>
+<tr class="r14"><td class="c1">Week 12<br /> 4/07, 4/09 </td><td class="c2"> <a href="lecture-slides/equality.pdf">Equality constrained minimization</a> </td><td class="c3"> Chapter 10</td><td class="c4"> Homework 10 (due 4/17) </td></tr>
+<tr class="r15"><td class="c1">Week 13<br /> 4/14, 4/16 </td><td class="c2"> <a href="lecture-slides/barrier.pdf">Interior-point methods</a></td><td class="c3"> Chapter 11</td><td class="c4"> Homework 11 (due 4/24) </td></tr>
+<tr class="r16"><td class="c1">Week 14<br /> 4/21, 4/23 </td><td class="c2"> Advanced topic: TBD </td><td class="c3"> TBD </td><td class="c4"> <b>Final programming<br /> assignment (due 4/29)</b> </td></tr>
+<tr class="r17"><td class="c1">Week 15<br /> 4/28 </td><td class="c2"> <a href="lecture-slides/conclusion.pdf">Conclusions</a> </td><td class="c3"> N/A </td><td class="c4"> <b>Final exam<br /> date TBD</b>
+</td></tr></table>
+<h3>Textbook</h3>
+<p>The textbook is Convex Optimization by Boyd and Vandenberghe, available <a href="https://web.stanford.edu/~boyd/cvxbook/">online</a>.</p>
+<p>Additional optional resources that may prove useful include:</p>
+<ul>
+<li><p>J. Renegar, A Mathematical View of Interior Point Methods for Convex Optimization, 1998</p>
+</li>
+<li><p>A. Ben-Tal and A. Nemirovski, Lectures on Modern Convex Optimization: Analysis, Algorithms, and Engineering Applications, SIAM, 2001</p>
+</li>
+<li><p>D. Bertsekas, A. Nedic, and A Ozdaglar, Convex Analysis and Optimization , 2003</p>
+</li>
+<li><p>L. El Ghaoui's <a href="https://people.eecs.berkeley.edu/~elghaoui/Teaching/EE227BT/LectureNotes_EE227BT.pdf">EE227BT Lecture Notes</a></p>
+</li>
+</ul>
+<h3>Software</h3>
+<p>You will use one of <a href="http://cvxr.com/cvx/">CVX</a> (Matlab), <a href="https://www.cvxpy.org/">CVXPY</a> (Python), or <a href="http://convexjl.readthedocs.org/">Convex.jl</a> (Julia), to write simple scripts. We refer to CVX, CVXPY, and Convex.jl collectively as CVX*.</p>
+<h3>Previous Grading</h3>
+<ul>
+<li><p>Homework (20%): there will be weekly homework assignments, handed out on Tuesday, and due the following Friday by 5pm.  The homework assignments <b>must be LateXed and submitted on Canvas via Gradescope</b>.  Please use the <a href="https://web.stanford.edu/class/ee364b/latex_templates/">LaTeX templates</a> provided by Stephen Boyd's EE364b course, and follow the recommended style guide.  You will be given <b>5 free late days</b> which you may use as you please throughout the semester, after which no late assignments will be accepted.  You are allowed, even encouraged, to work on homework in small groups, but you must write up your own homework solutions and code to hand in.  Homework will be graded on a scale of 0-4.</p>
+</li>
+<li><p>Midterm exam (30%): there will be an in-class, 75 minute, closed book, closed notes midterm scheduled for <b>3/03</b>.</p>
+</li>
+<li><p>Final programming assignment (15%): there will be a final programming assignment due on the last day of classes <b>4/29</b>. </p>
+</li>
+<li><p>Final exam (35%): there will be a final exam scheduled during the final exam period.
+Note that these weights are approximate, and we reserve the right to change them later.</p>
+</li>
+</ul>
+<p><b>Code of Academic Integrity:</b> All students are expected to adhere to the University’s <a href="https://catalog.upenn.edu/pennbook/code-of-academic-integrity/">Code of Academic Integrity</a>.  </p>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49484039-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-49484039-2');
+</script>
+
+<div id="footer">
+<div id="footer-text">
+Page generated 2020-04-21 09:30:23 EDT, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

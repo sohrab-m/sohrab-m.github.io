@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: lec21notes.aux
+The style file: unsrt.bst
+Illegal, another \bibstyle command---line 29 of file lec21notes.aux
+ : \bibstyle
+ :          {ieee}
+I'm skipping whatever remains of this command
+Database file #1: library2.bib
+Warning--empty journal in Mania2018
+You've used 5 entries,
+            1791 wiz_defined-function locations,
+            480 strings with 4403 characters,
+and the built_in function-call counts, 1241 in all, are:
+= -- 121
+> -- 37
+< -- 1
++ -- 15
+- -- 10
+* -- 92
+:= -- 196
+add.period$ -- 15
+call.type$ -- 5
+change.case$ -- 5
+chr.to.int$ -- 0
+cite$ -- 6
+duplicate$ -- 50
+empty$ -- 122
+format.name$ -- 10
+if$ -- 268
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 5
+newline$ -- 28
+num.names$ -- 5
+pop$ -- 9
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 21
+stack$ -- 0
+substring$ -- 125
+swap$ -- 9
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 16
+width$ -- 6
+write$ -- 56
+(There was 1 error message)

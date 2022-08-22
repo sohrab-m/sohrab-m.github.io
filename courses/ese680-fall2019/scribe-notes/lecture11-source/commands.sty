@@ -1,0 +1,202 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{commands}[2017/10/25 Math macros]
+
+\RequirePackage{etoolbox}
+\newtoggle{isdraft}
+\DeclareOption{draft}{\toggletrue{isdraft}}
+\ProcessOptions\relax
+
+
+\newcommand{\todo}[1]{
+\iftoggle{isdraft}{
+\vspace{5 mm}\par \noindent \marginpar{\textsc{ToDo}}
+\framebox{\begin{minipage}[c]{0.95 \columnwidth} \tt #1
+\end{minipage}}\vspace{5 mm}\par}{}}
+
+\newcommand{\propchange}[1]{
+\iftoggle{isdraft}{
+\textcolor{blue}{#1}}{#1}}
+
+\newcommand{\propdelete}[2]{
+\iftoggle{isdraft}{
+\textcolor{blue}{\sout{#1} {#2}}}{}}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{example}{Example}
+\numberwithin{theorem}{section}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{coro}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\def\qed{\rule[0pt]{5pt}{5pt}\par\medskip}
+\renewcommand{\qedhere}{\hfill ~\qed}
+\renewenvironment{proof}{{\noindent\bf Proof.}}{\qedhere}
+
+\newcommand{\minimize}{\mbox{minimize}}
+\newcommand{\maximize}{\mbox{maximize}}
+\newcommand{\st}{\mbox{subject to}}
+
+\newcommand{\statespace}[4]{\left[ \begin{array}{c|c} #1 & #2 \\ \hline\rule{0pt}{2.6ex} #3 & #4 \end{array} \right]}
+\newcommand{\tf}[1]{\boldsymbol{#1}}
+\newcommand{\Ah}{\widehat{A}}
+\newcommand{\Ahat}{\Ah}
+\newcommand{\Bhat}{\Bh}
+\newcommand{\Bh}{\widehat{B}}
+\newcommand{\Kh}{\widehat{K}}
+\newcommand{\Jh}{\widehat{J}}
+\newcommand{\Phixh}{\hat{\tf \Phi}_x}
+\newcommand{\Phiuh}{\hat{\tf \Phi}_u}
+\newcommand{\Dh}{\hat{\tf{\Delta}}}
+\newcommand{\trueA}{A}
+\newcommand{\trueB}{B}
+\newcommand{\trueK}{K_\star}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Qq}{\mathcal{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\Ahh}{\hat{\A}}
+\newcommand{\Bhh}{\hat{\B}}
+\newcommand{\DA}{\mathcal{D}_{\A}}
+\newcommand{\DB}{\mathcal{D}_{\B}}
+
+
+\DeclareMathOperator*{\argmin}{arg\!\min}
+\DeclareMathOperator*{\argmax}{arg\!\max}
+\DeclareMathOperator*{\sgn}{sgn}
+\DeclareMathOperator*{\supp}{supp}
+\DeclareMathOperator*{\rank}{rank}
+\DeclareMathOperator*{\diag}{diag}
+\DeclareMathOperator*{\Tr}{{tr}}
+\DeclareMathOperator*{\image}{Im}
+\DeclareMathOperator*{\nullspace}{Kern}
+\DeclareMathOperator*{\rowspace}{RS}
+\DeclareMathOperator*{\colspace}{CS}
+\DeclareMathOperator*{\dom}{dom}
+\DeclareMathOperator*{\closure}{cl}
+\DeclareMathOperator*{\vol}{vol}
+\DeclareMathOperator*{\Span}{span}
+\DeclareMathOperator*{\polylog}{polylog}
+\DeclareMathOperator*{\Band}{Band}
+\newcommand{\grad}{\mathrm{grad}}
+\newcommand{\bias}{\mathrm{Bias}}
+\newcommand{\var}{\mathrm{Var}}
+
+\newcommand{\Acal}{\ensuremath{\mathcal{A}}}
+\newcommand{\Cset}{\ensuremath{\mathcal{C}}}
+\newcommand{\X}{\ensuremath{\mathcal{X}}}
+\newcommand{\Y}{\ensuremath{\mathcal{Y}}}
+\newcommand{\Z}{\ensuremath{\mathcal{Z}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+\newcommand{\Bcal}{\ensuremath{\mathcal{B}}}
+\newcommand{\G}{\ensuremath{\mathcal{G}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\F}{\ensuremath{\mathcal{F}}}
+\newcommand{\I}{\ensuremath{\mathcal{I}}}
+\newcommand{\Set}{\ensuremath{\mathcal{S}}}
+\newcommand{\Hyp}{\ensuremath{\mathcal{H}}}
+\newcommand{\Loss}{\ensuremath{\mathcal{L}}}
+\newcommand{\Lagrange}{\ensuremath{\mathcal{L}}}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\bignorm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\twonorm}[1]{\lVert #1 \rVert_{2}}
+\newcommand{\bigtwonorm}[1]{\left\lVert #1 \right\rVert_{2}}
+\newcommand{\spectralnorm}[1]{\twonorm{#1}}
+\newcommand{\bigspectralnorm}[1]{\bigtwonorm{#1}}
+\newcommand{\maxnorm}[1]{\lVert #1 \rVert_{\infty}}
+\newcommand{\onenorm}[1]{\left\lVert #1 \right\rVert_{1}}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\ip}[2]{\ensuremath{\langle #1, #2 \rangle}}
+\newcommand{\bigip}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\PD}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\abs}[1]{\ensuremath{| #1 |}}
+\newcommand{\bigabs}[1]{\ensuremath{\left| #1 \right|}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\Normal}{\mathcal{N}}
+\newcommand{\rdraw}{\xleftarrow{\$}}
+\newcommand{\ind}{\mathbbm{1}}
+\renewcommand{\vec}{\mathrm{vec}}
+\newcommand{\Sym}{\mathbf{S}}
+\newcommand{\Toep}{\mathrm{Toep}}
+\newcommand{\mgf}{\E\left[e^{\lambda(X-\E X)}\right]}
+\newcommand{\Sp}{\calS}
+
+\newcommand{\lmin}[1]{\lambda_{\min}\left(#1\right)}
+\renewcommand{\exp}[1]{\mathrm{exp}\left(#1\right)}
+\newcommand{\leb}{\mu}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Prob}[1]{\Pr\left[#1\right]}
+\newcommand{\T}{\top}
+\newcommand{\tp}{\mathsf{T}}
+\newcommand{\Ncal}{\mathcal{N}}
+\newcommand{\vecx}{{x}}
+\newcommand{\vecw}{{w}}
+\newcommand{\vecu}{{u}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\Res}[1]{\mathfrak{R}_{#1}}
+
+\newcommand{\Rt}{\tf{\tilde{R}}}
+\newcommand{\Mt}{\tf{\tilde{M}}}
+\newcommand{\Nt}{\tf{\tilde{N}}}
+\newcommand{\Lt}{\tf{\tilde{L}}}
+\newcommand{\Kt}{\tf{\tilde{K}}}
+\newcommand{\Pt}{\tf{\tilde{P}}}
+\newcommand{\Gt}{\tf{\tilde{G}}}
+\newcommand{\gt}{\tilde{g}}
+
+\newcommand{\Ro}{\tf{{R}}_0}
+\newcommand{\Mo}{\tf{{M}}_0}
+\newcommand{\No}{\tf{{N}}_0}
+\newcommand{\Lo}{\tf{{L}}_0}
+\newcommand{\Ko}{\tf{{K}}_0}
+
+\newcommand{\Rh}{\tf{\hat{R}}}
+\newcommand{\Mh}{\tf{\hat{M}}}
+\newcommand{\Nh}{\tf{\hat{N}}}
+\newcommand{\Lh}{\tf{\hat{L}}}
+\newcommand{\wh}{\hat{w}}
+
+\newcommand{\Thetat}{\widetilde{\Theta}}
+\newcommand{\Thetah}{\widehat{\Theta}}
+\newcommand{\Thetamat}{\begin{bmatrix} \tf R & \tf N \\ \tf M & \tf L \end{bmatrix}}
+\newcommand{\Thetatmat}{\begin{bmatrix} \Rt & \Nt \\ \Mt & \Lt \end{bmatrix}}
+\newcommand{\Thetahmat}{\begin{bmatrix} \Rh & \Nh \\ \Mh & \Lh \end{bmatrix}}
+
+\newcommand{\Ind}[1]{\mathbbm{1}_{#1}}
+
+\newcommand{\statedim}{{n_x}}
+\newcommand{\inputdim}{{n_u}}
+\newcommand{\hinf}{\mathcal{H}_\infty}
+\newcommand{\htwo}{\mathcal{H}_2}
+\newcommand{\RHinf}{\mathcal{RH}_\infty}
+
+\newcommand{\ltwonorm}[1]{\| #1 \|_2}
+\newcommand{\hinfnorm}[1]{\| #1 \|_{\hinf}}
+\newcommand{\iid}{\stackrel{\mathclap{\text{\scriptsize{ \tiny i.i.d.}}}}{\sim}}
+
+\newcommand{\opt}{\mathrm{opt}}
+\newcommand{\dist}{\stackrel{\mathclap{\text{\scriptsize{ \tiny dist}}}}{=}}
+
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calE}{\mathcal{E}}
+
+\newcommand{\cvectwo}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+\newcommand{\rvectwo}[2]{\begin{bmatrix} #1 & #2 \end{bmatrix}}
+\newcommand{\bmattwo}[4]{\begin{bmatrix} #1 & #2 \\ #3 & #4 \end{bmatrix}}
+
+\newcommand{\dlyap}{\mathsf{dlyap}}
+\newcommand{\lambdah}{\widehat{\lambda}}
+
+\newcommand{\Qh}{\widehat{Q}}
+
+\newcommand{\redtext}[1]{{\color{red}#1}}
+
+\newcommand{\Otilde}{\widetilde{O}}

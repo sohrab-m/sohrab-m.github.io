@@ -1,0 +1,34 @@
+\begin{thebibliography}{1}
+
+\bibitem{Willia1992}
+Ronald~J. Williams.
+\newblock {Simple Statistical Gradient-Following Algorithms for Connectionist
+  Reinforcement Learning}.
+\newblock {\em Machine Learning}, 8(3):229--256, 1992.
+
+\bibitem{Mania2018}
+Horia Mania, Aurelia Guy, and Benjamin Recht.
+\newblock {Simple random search provides a competitive approach to
+  reinforcement learning}.
+\newblock pages 1--22, 2018.
+
+\bibitem{Recht2019}
+Benjamin Recht.
+\newblock {A Tour of Reinforcement Learning: The View from Continuous Control}.
+\newblock {\em Annual Review of Control, Robotics, and Autonomous Systems},
+  2(1):253--279, 2019.
+
+\bibitem{Fazel2018}
+Maryam Fazel, Rong Ge, Sham~M. Kakade, and Mehran Mesbahi.
+\newblock {Global Convergence of Policy Gradient Methods for the Linear
+  Quadratic Regulator}.
+\newblock {\em 35th International Conference on Machine Learning, ICML 2018},
+  4:2385--2413, 2018.
+
+\bibitem{Polyak1963}
+B.~T. Polyak.
+\newblock {Gradient methods for the minimisation of functionals}.
+\newblock {\em USSR Computational Mathematics and Mathematical Physics},
+  3(4):864--878, 1963.
+
+\end{thebibliography}

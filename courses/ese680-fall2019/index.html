@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>ESE 680, Fall 2019 &ndash; Learning and Control</title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">ESE 680, Fall 2019</div>
+<div class="menu-item"><a href="index.html">home</a></div>
+<div class="menu-item"><a href="schedule.html">schedule</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>ESE 680, Fall 2019 &ndash; Learning and Control</h1>
+</div>
+<p><b>Instructor:</b> Nikolai Matni, Assistant Professor, ESE Department</p>
+<p><b>E-mail</b>: nmatni@seas.upenn.edu (please start subject line with ESE680)</p>
+<p><b>Lectures:</b> Tu/Th 3-4.30pm, Moore 212</p>
+<p><b>Office hours</b>: by appointment, Levine 374</p>
+<p><b>Syllabus</b>: <a href="./Syllabus.pdf">ESE680-004</a></p>
+<h2>Overview</h2>
+<p>This advanced topics course will provide students with an introduction to current areas of research at the intersection of machine learning and control.  We will investigate machine learning and data-driven algorithms that interact with the physical world.  Topics of study will include learning models of dynamical systems, using these models to robustly meet performance objectives, optimally refining models to improve performance, and verifying the safety of machine learning enabled control systems.  The course will be a combination of lectures and student led presentations of papers drawn from a list of both classical and modern texts.  Students will be evaluated based on their paper presentation, as well as a class project.  Suitable choices for projects include implementing, evaluating, and comparing tools introduced in class, extending existing theoretical results, and applying tools to a domain specific problem of their choosing.</p>
+<h2>Tentative list of topics (subject to change based on student interest)</h2>
+<ul>
+<li><p><b>System identification</b></p>
+<ul>
+<li><p>asymptotic vs. finite-time guarantees</p>
+</li>
+<li><p>full state vs. partially observed systems</p>
+</li>
+<li><p>system identification for control</p>
+</li>
+</ul>
+
+</li>
+</ul>
+<ul>
+<li><p><b>Learning theory</b></p>
+<ul>
+<li><p>risk and empirical risk</p>
+</li>
+<li><p>concentration inequalities</p>
+</li>
+<li><p>uniform convergence</p>
+</li>
+<li><p>stability and generalization</p>
+</li>
+</ul>
+
+</li>
+</ul>
+<ul>
+<li><p><b>Control of uncertain systems</b></p>
+<ul>
+<li><p>modeling assumptions, system norms, robust stability</p>
+</li>
+<li><p>optimal and robust control</p>
+</li>
+<li><p>model validation and robust control</p>
+</li>
+</ul>
+
+</li>
+</ul>
+<ul>
+<li><p><b>Model based control of learned systems</b></p>
+<ul>
+<li><p>metrics for learning and control problems: regret, PAC, and beyond</p>
+</li>
+<li><p>end-to-end sample complexity guarantees</p>
+</li>
+<li><p>comparison of online approaches</p>
+</li>
+</ul>
+
+</li>
+</ul>
+<ul>
+<li><p><b>Model free methods</b></p>
+<ul>
+<li><p>approximate dynamic programming and reinforcement learning</p>
+</li>
+<li><p>sample complexity guarantees for continuous control</p>
+</li>
+<li><p>complexity gaps between model free and model based methods</p>
+</li>
+</ul>
+
+</li>
+</ul>
+<ul>
+<li><p><b>Safe learning and control</b></p>
+<ul>
+<li><p>robust invariant sets and model predictive control</p>
+</li>
+<li><p>Lyapunov functions and regions of attractions</p>
+</li>
+<li><p>Control Lyapunov and control barrier functions</p>
+</li>
+</ul>
+
+</li>
+</ul>
+<h2>Templates</h2>
+<ul>
+<li><p>Lecture notes <a href="template.tex">template</a>.</p>
+</li>
+</ul>
+<h2>About the Course</h2>
+<h3>Prerequesites</h3>
+<p>Linear Systems (ESE 500), and one of Machine Learning (CIS 520) or Modern Convex Optimization (ESE 605), or permission from the instructor.  The course will assume maturity in topics like linear algebra, optimization, stochastic processes, and calculus.</p>
+<h3>Class structure</h3>
+<p>We will try to adhere to the following structure: the course is roughly divided into 6 units, one for each of the topics listed above.  For each unit, the instructor will teach 2-3 lectures, followed by 1-2 student led lectures consisting of a paper presentation and group discussion.  One or two readings will be assigned for each lecture.  Students are expected to read the papers and come to class prepared to discuss them in detail.</p>
+<h3>Grading</h3>
+<p>Grading will be based on course participation, paper presentation/scribing, and the course project.  </p>
+<h3>Paper Presentations and Scribing</h3>
+<p>Depending on enrollment numbers, each student will either be assigned a paper to present or asked to scribe a lecture.</p>
+<p><b>Presentations</b> should address the following questions:</p>
+<ul>
+<li><p>Problem statement: what problem is the paper solving, and why is it meaningful?</p>
+</li>
+</ul>
+<ul>
+<li><p>Prior work: how does this paper fit into the current research landscape.</p>
+</li>
+</ul>
+<ul>
+<li><p>Key idea/Main result: what is the main result of the paper? What is the main takeaway from the paper?</p>
+</li>
+</ul>
+<ul>
+<li><p>Key technical tools: what are the main technical contributions of the paper?  Be prepared to present and explain these in detail.</p>
+</li>
+</ul>
+<ul>
+<li><p>Points of confusion: are there technical or conceptual arguments that are unclear or incomplete?  Bring these up so that we can discuss and try to work through them in class.</p>
+</li>
+</ul>
+<ul>
+<li><p>Shortcomings/areas for improvement: what are some of the flaws of the paper?  What are possible directions for future work to address these?</p>
+</li>
+</ul>
+<p><b>Scribes</b> will be expected to both summarize the assigned reading and the lecture itself, and should address all of the same points a presentation would.  It is expected that you will put several hours into these notes, as they should go beyond just summarizing what was presented in class.</p>
+<h3>Project</h3>
+<p>Projects may be done individually or in groups of two.  Students are encouraged (but not required) to propose a topic that connects class material to aspects of their research.  Students are expected to produce the following deliverables:</p>
+<ul>
+<li><p>Proposal (1-2 pages): <b>due Fri Oct 4, 2019</b></p>
+</li>
+<li><p>Midterm update (2-3 pages)</p>
+</li>
+<li><p>Final presentation</p>
+</li>
+<li><p>Final report (6-8 pages)</p>
+</li>
+</ul>
+<p>The final report and presentation are meant to mimic a conference setting.  The report is expected to be a self-contained document with introduction, literature review, problem formulation, main results (and experiments if applicable), and discussion/conlcusion sections.</p>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49484039-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-49484039-2');
+</script>
+
+<div id="footer">
+<div id="footer-text">
+Page generated 2019-09-17 13:53:45 EDT, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

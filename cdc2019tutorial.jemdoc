@@ -1,0 +1,91 @@
+# jemdoc: menu{MENU}{cdc2019tutorial.html}
+= CDC 2019 Tutorial - From Self-Tuning Regulators to Reinforcement Learning and Back Again \n
+[https://nikolaimatni.github.io Nikolai Matni], [https://people.kth.se/~alepro/ Alexandre Proutiere], [http://www.control.lth.se/personnel/anders-rantzer.html Anders Rantzer], [https://stephentu.github.io/ Stephen Tu]
+
+== Abstract
+Machine and reinforcement learning (RL) are increasingly being applied to plan and control the behavior of autonomous systems interacting with the physical world. Examples include self-driving vehicles, distributed sensor networks, and agile robots. However, when machine learning is to be applied in these new settings, the algorithms had better come with the same type of reliability, robustness, and safety bounds that are hallmarks of control theory, or failures could be catastrophic. Thus, as learning algorithms are increasingly and more aggressively deployed in safety critical settings, it is imperative that control theorists join the conversation. The goal of this tutorial paper is to provide a starting point for control theorists wishing to work on learning related problems, by covering recent advances bridging learning and control theory, and by placing these results within an appropriate historical context of system identification and adaptive control.
+
+== Slides
+- [./files/1912CDCintro.pdf Introduction] by Anders Rantzer.
+- [https://www.dropbox.com/s/nf350an518bth5u/cdc2019-rl-tutorial-clean.pptx?dl=0 From Self-Tuning Regulators to Reinforcement Learning and Back Again] by Nikolai Matni.
+- [./files/slidesAP.pdf Optimal Adaptive Control in Discrete Systems] by Alexandre Proutiere.
+- [./files/1912CDCexplore.pdf Dual Control: Optimization Based Exploration/Exploitation] by Anders Rantzer.
+- [./files/cdc19_sysid_tutorial_Tu.pdf Concentration Inequalities for System Identification] by Stephen Tu.
+
+== Papers
+
+=== Tutorial Papers
+~~~
+{}{raw}
+<ul>
+<li style="line-height: 17px; padding-left: 20px; text-indent: -15px; " class="full-width" value="1">
+                        <p style="text-indent: -15px; " class="paragraph_style_1"><span style="font-size: 14px; " class="Bullet"></span><span style="width: 3px; " class="inline-block"></span> N. Matni, A. Proutiere, A. Rantzer and S. Tu, <a href="https://arxiv.org/abs/1906.11392"> From Self-Tuning Regulators to Reinforcement Learning and Back Again</a>, IEEE Conference on Decision and Control, 2019.<br /></p>
+                    </li> 
+                    <li style="line-height: 17px; padding-left: 20px; text-indent: -15px; " class="full-width" value="1">
+                        <p style="text-indent: -15px; " class="paragraph_style_1"><span style="font-size: 14px; " class="Bullet"></span><span style="width: 3px; " class="inline-block"></span> N. Matni, and S. Tu, <a href="https://arxiv.org/abs/1906.11395"> A Tutorial on Concentration Bounds for System Identification</a> IEEE Conference on Decision and Control, 2019.   <br /></p>
+                    </li> 
+</ul>                    
+~~~
+
+=== Additional References
+
+==== From Self-Tuning Regulators to Reinforcement Learning and Back Again:
+
+- S. Dean, H. Mania, N. Matni, B. Recht, and S. Tu, [https://arxiv.org/abs/1710.01688 On the sample complexity of the linear quadratic regulator], Journal of Foundations of Computational Math, 2019.
+
+- S. Dean, H. Mania, N. Matni, B. Recht, and S. Tu, [https://arxiv.org/abs/1805.09388 Regret bounds for robust adaptive control of the linear quadratic regulator], NeurIPS, 2018.
+
+- S. Dean, S. Tu, N. Matni, B. Recht, [https://arxiv.org/abs/1809.10121 Safely learning to control the constrained linear quadratic regulator], IEEE American Control Conference, 2019.
+
+- Y.-S. Wang, N. Matni, and J. C. Doyle, [https://arxiv.org/abs/1610.04815 A system level approach to controller synthesis], IEEE Transactions on Automatic Control, 2019.
+
+- H. Mania, S. Tu, B. Recht, [https://papers.nips.cc/paper/9205-certainty-equivalence-is-efficient-for-linear-quadratic-control.pdf Certainty Equivalence is Efficient for Linear Quadratic Control], NeurIPS, 2019
+
+==== Optimal Adaptive Control in Discrete Systems:
+- J. Ok, A. Proutiere, D. Tranos, [https://arxiv.org/abs/1806.00775 Exploration in structured RL], NeurIPS, 2018.
+
+- A. N. Burnetas, M. N. Kathehakis, [https://www.jstor.org/stable/3690147 Optimal Adaptive Policies for Markov Decision Processes], Mathematics of Operations Research, 1997.
+
+- T. Jaksch, R. Ortner, P. Auer, [http://www.jmlr.org/papers/volume11/jaksch10a/jaksch10a.pdf Near-optimal Regret Bounds for Reinforcement Learning], NeurIPS, 2009.
+
+- S. Agrawal, R. Jia, [https://papers.nips.cc/paper/6718-optimistic-posterior-sampling-for-reinforcement-learning-worst-case-regret-bounds Optimistic posterior sampling for reinforcement learning: worst-case
+regret bounds], NeurIPS, 2017.
+
+- Y. Jedra, A. Proutiere, [https://arxiv.org/abs/1903.10343 Sample complexity lower bounds for linear system identification], IEEE Conference on Decision and Control, 2019.
+
+- Y. Abbasi-Yadkori et al., [https://papers.nips.cc/paper/4975-online-learning-in-markov-decision-processes-with-adversarially-chosen-transition-probability-distributions Online Learning in Markov Decision Processes with Adversarially Chosen Transition Probability Distributions], NeurIPS, 2013.
+
+==== Dual Control: Optimization Based Exploration/Exploitation:
+
+- A. Rantzer, [https://arxiv.org/abs/1912.03550 Minimax Adaptive Control for State Matrix with Unknown Sign], arXiv:1912.03550, 2019.
+
+==== Concentration Inequalities for System Identification:
+- M. Simchowitz et al., [https://arxiv.org/abs/1802.08334 Learning Without Mixing: Towards a Sharp Analysis of Linear System Identification], Conference on Learning Theory, 2019.
+
+- T. Sarkar, A. Rakhlin, [https://arxiv.org/abs/1812.01251 Near optimal finite time identification of arbitrary linear dynamical systems], ICML 2019.
+
+- A. Rantzer, [https://ieeexplore.ieee.org/document/8431891 Concentration Bounds for Single Parameter Adaptive Control], IEEE American Control Conference, 2018. 
+
+- Y. Abbasi-Yadkori et al., [https://arxiv.org/abs/1102.2670 Online Least Squares Estimation with Self-Normalized Processes: An Application to Bandit Problems], Conference on Learning Theory, 2011.
+
+- B. Bercu, A. Touati, [https://arxiv.org/pdf/0707.3715.pdf Exponential inequalities for self-normalized martingales with applications]. Annals of Applied Probabability, 2008.
+
+- H.B. Mann, A. Wald, [https://www.jstor.org/stable/pdf/1905674.pdf On the Statistical Treatment of Linear Stochastic Difference Equations], Econometrica, 1943.
+
+- J.S. White, [https://projecteuclid.org/euclid.aoms/1177706450 The Limiting Distribution of the Serial Correlation Coefficient in the Explosive Case],  Annals of Mathematical Statistics, 1958.
+
+~~~
+{}{raw}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49484039-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-49484039-2');
+</script>
+~~~
+
+
+

@@ -1,0 +1,276 @@
+# jemdoc: menu{MENU}{schedule.html}
+= ESE 680, Fall 2019 -- Schedule and Course Materials\n
+
+== Course Materials
+There is no textbook for the course.  Our discussions will be guided by papers, monographs, and lecture notes that are available online.  The following incomplete list will grow:
+- \[Recht19\] [https://www.annualreviews.org/doi/pdf/10.1146/annurev-control-053018-023825 A Tour of Reinforcement Learning: The View from Continuous Control], Recht 2019
+- \[Viberg95\] [https://www.sciencedirect.com/science/article/pii/0005109895001075  Subspace-based Methods for the Identification of Linear Time-invariant Systems], Viberg 1995
+- \[MatniAndTu19\] [https://arxiv.org/abs/1906.11395 A Tutorial on Concentration Bounds for System Identification], Matni and Tu, 2019
+- \[Rigollet\] [https://ocw.mit.edu/courses/mathematics/18-s997-high-dimensional-statistics-spring-2015/lecture-notes/MIT18_S997S15_CourseNotes.pdf Lecture Notes on High-Dimensional Statistics], Rigollet
+- \[DeanEtAl17\] [https://arxiv.org/abs/1710.01688 On the Sample Complexity of the Linear Quadratic Regulator], Dean, Mania, Matni, Recht, and Tu, 2017
+- \[Wasserman\] [http://www.stat.cmu.edu/~larry/=stat705/Lecture13.pdf CMU Stats 705, Lecture 13: The Boostrap], Wasserman
+- \[SarkarAndRakhlin19\] [http://proceedings.mlr.press/v97/sarkar19a/sarkar19a-supp.pdf Near optimal finite time identification of arbitrary linear dynamical systems], Sarkar and Rakhlin, 2019
+- \[SimchowitzEtAl18\] [https://arxiv.org/abs/1802.08334 Learning Without Mixing: Towards A Sharp Analysis of Linear System Identification], Simchowitz, Mania, Tu, Jordan, and Recht, 2018
+- \[OymakAndOzay19\] [https://arxiv.org/abs/1806.05722 Non-asymptotic Identification of LTI Systems from a Single Trajectory], Oymak and Ozay, 2019
+- \[TsiamisAndPappas19\] [https://arxiv.org/abs/1903.09122 Finite Sample Analysis of Stochastic System Identification], Tsiamis and Pappas, 2019
+- \[DFT\] [https://www.control.utoronto.ca/people/profs/francis/dft.pdf Feedback Control Theory], Doyle, Francis, and Tannenbaum
+- \[Lall\] [http://floatium.stanford.edu/engr210a/lectures/lecture17_2001_12_03_02.pdf Stanford Engr210a, Lecture 17: LFTs and robustness], Lall
+- \[LessardRechtPackard16\] [https://epubs.siam.org/doi/pdf/10.1137/15M1009597 Analysis and design of optimization algorithms via integral quadratic constraints], Lessard, Recth, and Packard, 2016
+- \[Jonsson\] [http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=4AF5981026ACEC33748BA9D7CD2DDAE9?doi=10.1.1.22.3273&rep=rep1&type=pdf Lecture Notes on Integral Quadratic Constraints], Jonsson
+- \[LeongDoyle16\] [https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7798480 Understanding Robust Control Theory Via Stick Balancing], Leong and Doyle, 2016 
+- \[LeongDoyle17] [https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7937900 Effects of Delays, Poles, and Zeros on Time Domain Waterbed Tradeoffs and Oscillations], Leong and Doyle, 2017
+- \[SmithDoyle92\] [https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=148346 Model Validation: A Connection between Robust Control and System Identification], Smith and Doyle, 1992
+- \[PoollaEtAl94\] [https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=284871 A Time-Domain Approach to Model Validation], Poolla, Khargonekar, Tikku, Krause, and Nagpal, 1994 
+- \[Prajna05\]  [https://www.sciencedirect.com/science/article/pii/S0005109805002839 Barrier Certificates for nonlinear model validation]
+- \[AndersonEtAl19\] [https://arxiv.org/pdf/1904.01634.pdf System Level Synthesis], Anderson, Doyle, Low, and Matni, 2019
+- \[MatniEtAl19\] [https://arxiv.org/abs/1906.11392 From self-tuning regulators to reinforcement learning and back again], Matni, Proutiere, Rantzer, and Tu, 2019
+- \[DannLattimoreBrunskill17\] [https://arxiv.org/abs/1703.07710 Unifying PAC and Regret: Uniform PAC Bounds for
+Episodic Reinforcement Learning], Dann, Lattimore, and Brunskill, 2017
+- \[AbbasiYadkoriSzepesvari11\] [http://proceedings.mlr.press/v19/abbasi-yadkori11a/abbasi-yadkori11a.pdf Regret Bounds for the Adaptive Control of Linear Quadratic Systems], Abbasi-Yadkori and Szepesari, 2011
+- \[AbeilleLazaric18\] [http://proceedings.mlr.press/v80/abeille18a/abeille18a-supp.pdf Improved Regret Bounds for Thompson Sampling in Linear Quadratic Control Problems], Abeille and Lazaric, 2018
+- \[BousquetElisseeff02\] [http://www.jmlr.org/papers/volume2/bousquet02a/bousquet02a.pdf Stability and Generalization]
+- \[HardtRechtSinger16\] [https://arxiv.org/abs/1509.01240 Train faster, generalize better: Stability of stochastic gradient descent], Hardt, Recht, and Singer, 2016
+- \[BartlettMendelson02\] [http://www.jmlr.org/papers/volume3/bartlett02a/bartlett02a.pdf Rademacher and Gaussian Complexities: Risk Bounds and Structural Results]
+- \[SrebroSridharanTewari10\] [https://www.cs.cornell.edu/~sridharan/smoothness.pdf Smoothness, Low Noise, and Fast Rates], Srebro, Sridharan, and Tewari, 2010
+- \[SuttonBarto\] [http://incompleteideas.net/book/bookdraft2017nov5.pdf Reinforcement Learning] Sutton and Barto, 2017
+- \[BradtkeYdstieBarto94\] [https://ieeexplore.ieee.org/abstract/document/735224 Adaptive linear quadratic control using policy iteration], Bradtke, Ydstie, and Barto, 1994
+- \[DuEtAl2019\] [https://arxiv.org/pdf/1910.03016.pdf Is a Good Representation Sufficient for Sample Efficient Reinforcement Learning?], Du, Kakade, Wang, and Yang, 2019
+- \[FazelGeKakadeMesbahi2019\] [https://arxiv.org/pdf/1801.05039.pdf Global Convergence of Policy Gradient
+Methods for the Linear Quadratic Regulator] Fazel, Ge, Kakade, and Mesbahi, 2019
+- \[TuRecht2018\] [https://arxiv.org/abs/1812.03565 The Gap Between Model-Based and Model-Free Methods on the Linear Quadratic Regulator: An Asymptotic Viewpoint], Tu and Recht, 2018
+- \[AmesEtAl19\] [https://arxiv.org/abs/1903.11199 Control Barrier Functions: Theory and Applications], Ames, Coogan, Egerstedt, Notomista, Sreenath, and Tabuada, 2019
+- \[BerkenkampEtAl17\] [https://arxiv.org/abs/1705.08551 Safe Model-based Reinforcement Learning with Stability Guarantees],  Berkenkamp, Turchetta, Schoellig, and Krause, 2017
+- \[FazlyabRobeyMorariPappas19\] [https://arxiv.org/abs/1906.04893 Efficient and Accurate Estimation of Lipschitz Constants for Deep Neural Networks] Fazlyab, Robey, Hassani, Morari, and Pappas, 2019
+- \[FazlyabMorariPappas19a\] [https://arxiv.org/abs/1910.04249 Probabilistic Verification and Reachability Analysis of Neural Networks via Semidefinite Programming], Fazlyab, Morari, and Pappas, 2019
+- \[FazlyabMorariPappas19b\] [https://arxiv.org/abs/1903.01287 Safety Verification and Robustness Analysis of Neural Networks via Quadratic Constraints and Semidefinite Programming] Fazlyab, Morari, and Pappas, 2019
+
+
+
+== Additional Resources
+- \[Ljung\] System Identification: Theory for the User, Ljung  ([http://www.control.isy.liu.se/research/reports/2007/2809.pdf survey paper])
+- \[Vershynin\] [https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.pdf High-Dimensional Probability], Verhsynin
+- Sanjay Lall's [http://floatium.stanford.edu/engr210a/ Engr201a] Robust Control course at Stanford
+- \[ZhouDoyleGlover\] Robust and Optimal Control, Zhou, Doyle, and Glover
+- \[ZhouDoyle\] Essentials of Robust Control, Zhou and Doyle
+- \[DullerudPaganini\] A course in robust control: a convex approach, Dullerud and Paganini
+- \[RussoEtAl17\] [https://arxiv.org/abs/1707.02038 A Tutorial on Thompson Sampling], Russo et al, 2017
+- \[Ioannou\] [http://www-bcf.usc.edu/~ioannou/RobustAdaptiveBook95pdf/Robust_Adaptive_Control.pdf Robust Adaptive Control], Ioannou, 1995
+- \[ShalevSchwartzAndBenDavid\] [http://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf Understanding Machine Learning: from Theory to Algorithms]
+- \[BousquetEtAl\] [http://www.econ.upf.edu/~lugosi/mlss_slt.pdf Introduction to Statistical Learning Theory]
+- \[CuckerSmale01] [https://www.ams.org/journals/bull/2002-39-01/S0273-0979-01-00923-5/S0273-0979-01-00923-5.pdf On the Mathematical Foundations of Learning]
+- MIT's [http://www.mit.edu/~9.520/fall18/index.html 9.520 Statistical Learning Theory and Applications]
+- \[Bertsekas\] [https://web.mit.edu/dimitrib/www/RLbook.html Reinforcement Learning and Optimal Control]
+- \[BersekasTsitsiklis\] [http://athenasc.com/ndpbook.html Neuro-dynamic Programming]
+- \[KrauthTuRecht2019\] [https://arxiv.org/abs/1905.12842 Finite-time Analysis of Approximate Policy Iteration for the Linear Quadratic Regulator], Krauth, Tu, and Recth, 2019
+- \[GaussianProcesses\] [http://www.gaussianprocess.org/gpml/chapters/ Gaussian Processes for Machine Learning], Rasmussen and Williams, 2006.
+
+== Schedule (subject to change)
+=== Logistics
+- Lecture 1: Aug 27
+    -- Welcome, logistics, and overview ([https://www.dropbox.com/s/dreu9wjgk0shutk/Lecture00-Welcome.pptx?dl=0 Slides])
+        --- Reading: [https://www.annualreviews.org/doi/pdf/10.1146/annurev-control-053018-023825 Sections 1-3 of Recht19]
+        --- [https://www.surveymonkey.com/r/XFSR26N
+ Background Poll]
+        --- [https://docs.google.com/spreadsheets/d/1Kqa-ZnnqO-r7-c0rTKNSaCNiz_hTQARH9V_Ug8blp3Q/edit?usp=sharing Sign up sheet]
+        
+    
+=== System Identification
+
+- Lecture 2: Aug 29
+    -- System identification 1: Identification of Linear-Time-Invariant systems
+        --- Reading: [https://www.sciencedirect.com/science/article/pii/0005109895001075 Viberg95]
+        --- Methods/algorithms: Subspace methods, Ho-Kalman
+        --- Scribe: Duc Nguyen, [scribe-notes/lecture02.pdf lecture notes]
+    
+- Lecture 3:  Sep 03 
+    -- System identification 2: concentration bounds and finite-data guarantees, full state iid case
+        --- Reading: [https://arxiv.org/abs/1906.11395 Sections 1-3 of MatniAndTu19], [https://ocw.mit.edu/courses/mathematics/18-s997-high-dimensional-statistics-spring-2015/lecture-notes/ Ch1 of Rigollet Lecture Notes]
+        --- Methods/algorithms: Ordinary Least Squares error analysis
+        --- Scribe: Zongyu Dai, [scribe-notes/lecture03.pdf lecture notes]
+
+- Lecture 4: Sep 05
+    -- System identification 3: finite-data guarantees (cont'd) & data-dependent bounds
+        --- Reading: [https://arxiv.org/abs/1906.11395 Section 5 of MatniAndTu19], [https://arxiv.org/abs/1710.01688 Prop 2.4 and Section 2.3 of DeanEtAl17], [http://www.stat.cmu.edu/~larry/=stat705/Lecture13.pdf Wasserman]
+        --- Methods/Algorithms: Ordinary Least Squares error analysis, The Bootstrap
+        --- Scribe: Kuk Jang, [scribe-notes/lecture04.pdf lecture notes]
+        
+- Lecture 5: Sep 10
+    -- System identification 4: student led discussion, full state single trajectory case
+        --- Paper: Choose one of [http://proceedings.mlr.press/v97/sarkar19a/sarkar19a-supp.pdf SarkarAndRakhlin19], [https://arxiv.org/abs/1802.08334 SimchowitzEtAl18]
+        --- Presenter:  Bernadette K. Bucher
+        
+- Lecture 6: Sep 12
+    -- System identification 5: student led discussion, partial state single trajectory case
+        --- Paper: Choose one of [https://arxiv.org/abs/1806.05722 OymakAndOzay19], [https://arxiv.org/abs/1903.09122 TsiamisAndPappas19]
+        --- Presenter: Alex Robey
+
+- Additional resources:
+    -- \[Ljung\] System Identification: Theory for the User, Ljung  ([http://www.control.isy.liu.se/research/reports/2007/2809.pdf survey paper])
+    -- \[Vershynin\] [https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.pdf High-Dimensional Probability], Verhsynin
+    
+=== Control of Uncertain Systems 
+
+- Lecture 7: Sep 17
+    -- Control of Uncertain Systems 1: introduction to optimal/robust control, modeling uncertainty, small gain theorem
+        --- Reading: [http://www.cds.caltech.edu/~macmardg/courses/cds110b/dft/dft92-ch2.pdf DFT Chapter 2], [http://floatium.stanford.edu/engr210a/lectures/lecture17_2001_12_03_02.pdf Lecture 17 of Lall]
+        --- Methods/Algorithms: LQR, H-inf and L1 optimal control, LFT respresentation of uncertainty, small gain theorem
+        --- Scribe: Christopher Hsu, [scribe-notes/lecture07.pdf lecture notes]
+        
+- Lecture 8: Sep 19
+    -- Control of Uncertain Systems 2: small gain theorem, a *very* brief introduction to the structured singular value (mu) and integral quadratic constraints (IQCs)
+        --- Reading: Chapter 8 of \[DullerudPaganini\], [https://epubs.siam.org/doi/pdf/10.1137/15M1009597 Sections 3.1-3.3 of LessardRechtPackard16], (optional reading: [http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=4AF5981026ACEC33748BA9D7CD2DDAE9?doi=10.1.1.22.3273&rep=rep1&type=pdf Jonsson IQC Lecture Notes])
+        --- Methods/Algorithms: small gain theorem, structured singular value, KYP Lemma, IQCs
+        --- Scribe: Kendall Queen, [scribe-notes/lecture08.pdf lecture notes]
+
+- Lecture 9: Sep 24
+    -- Control of Uncertain Systems 3: student led presentation on fundamental limits of robust control
+        --- Paper: Both [https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7798480 LeongDoyle16] and [https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7937900 LeongDoyle17]
+        --- Presenter: Anton Xue
+        
+- Lecture 10: Sep 26
+    -- Control of Uncertain Systems 4: student led presentation on model (in)validation from a robust control perspective
+        --- Paper: either [https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=148346 SmithDoyle92] or [https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=284871 PoollaEtAl94] *and* [https://www.sciencedirect.com/science/article/pii/S0005109805002839 Prajna05]
+        --- Presenter: Laura Jarin-Lipschitz
+        
+- Additional Resources:
+    -- Sanjay Lall's [http://floatium.stanford.edu/engr210a/ Engr201a] course at Stanford
+    -- \[ZhouDoyleGlover\] Robust and Optimal Control, Zhou, Doyle, and Glover
+    -- \[ZhouDoyle\] Essentials of Robust Control, Zhou and Doyle
+
+=== Model-based control of learned systems
+- Lecture 11: Oct 01
+    -- Model-based control of learned systems 1: interpretable robust control with System Level Synthesis and end-to-end bounds for learning to control an unknown linear dynamical system
+        --- Reading: [https://arxiv.org/pdf/1904.01634.pdf Sections 2, 3, 4.0 and 4.5 of AndersonEtAl19], [https://arxiv.org/abs/1710.01688 Sections 3 and 4 of DeanEtAl17]
+        --- Methods/Algorithms: system level synthesis, quantitative performance bounds, end-to-end bounds
+        --- Scribe: Haimin Hu, [scribe-notes/lecture11.pdf lecture notes]
+
+- Lecture 12: 0ct 03
+    -- Model-based control of learned systems 2: PAC, regret, and beyond, and what do we know about learning to control the linear quadratic regulator
+        --- Reading: [https://arxiv.org/abs/1906.11392  Section 3 of MatniEtAl19], [https://arxiv.org/abs/1703.07710 Sections 1 and 2 of DannLattimoreBrunskill17]
+        --- Methods/Algorithms: episodic and single-trajecotry PAC and Regret bounds
+        --- Scribe: Klayton Wittler, [scribe-notes/lecture12.pdf lecture notes]
+
+- Lecture 13: Oct 08
+    -- Model-based control of learned systems 3: student led presentation on Optimism in the Face of Uncertainty (OFU) for LQR
+    -- Paper: [http://proceedings.mlr.press/v19/abbasi-yadkori11a/abbasi-yadkori11a.pdf AbbasiYadkoriSzepesvari11]
+    -- Presenter: Shaoru Chen
+
+- Lecture 14: Oct 15
+    -- Model-based control of learned systems 4: student led presentation on Thompson Sampling for LQR
+    -- Paper: [http://proceedings.mlr.press/v80/abeille18a/abeille18a-supp.pdf AbeilleLazaric18]
+    -- Presenter: Rebecca Li
+    
+- Additional Resources:
+    -- \[RussoEtAl17\] [https://arxiv.org/abs/1707.02038 A Tutorial on Thompson Sampling], Russo et al, 2017
+    -- \[Ioannou\] [http://www-bcf.usc.edu/~ioannou/RobustAdaptiveBook95pdf/Robust_Adaptive_Control.pdf Robust Adaptive Control], Ioannou, 1995
+    
+=== Learning Theory
+    
+- Lecture 15: Oct 17
+    -- Learning theory 1: Empirical Risk Minimization and Uniform Convergence
+        --- Reading: [http://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf Chapters 2-4 ShalevSchwartzAndBenDavid], 
+        --- Methods/Algorithms: ERM, uniform convergence for bounded loss functions and finite hypothesis classes, and bounded and Lipschitz loss functions and compact hypothesis classes.
+        --- Scribe:  Shuo Li, [scribe-notes/lecture15.pdf lecture notes]
+
+- Lecture 16: Oct 22
+   -- Learning theory 2:  Algorithmic Stability and Stochastic Gradient Descent
+        --- Reading: [http://www.jmlr.org/papers/volume2/bousquet02a/bousquet02a.pdf BousquetElisseeff02], [https://arxiv.org/abs/1509.01240 HardtRechtSinger16]
+        --- Methods/Algorithms: Generalization through Algorithmic Stability, Stability and generalization of SGD
+        --- Scribe: Jialin Mao, [scribe-notes/lecture16.pdf lecture notes]
+    
+- Lecture 17: Oct 24
+    -- Learning theory 3: student led presentation on Rademacher and Gaussian Complexities for Risk Bounds
+        --- Paper: [http://www.jmlr.org/papers/volume3/bartlett02a/bartlett02a.pdf BartlettMendelson02]
+        --- Presenter: Alexandre Amice
+
+- Lecture 18: Oct 29
+    -- Learning theory 4: student led presentation on Smoothness, Low Noise, and Fast Rates
+        --- Paper: [https://www.cs.cornell.edu/~sridharan/smoothness.pdf SrebroSridharanTewari10]
+        --- Presenter: Han Wang
+        
+- Additional Resources:
+    -- \[BousquetEtAl\] [http://www.econ.upf.edu/~lugosi/mlss_slt.pdf Introduction to Statistical Learning Theory]
+    -- \[CuckerSmale01] [https://www.ams.org/journals/bull/2002-39-01/S0273-0979-01-00923-5/S0273-0979-01-00923-5.pdf On the Mathematical Foundations of Learning]
+    -- MIT's [http://www.mit.edu/~9.520/fall18/index.html 9.520 Statistical Learning Theory and Applications]
+    
+=== Model Free Methods
+    
+- Lecture 19: Oct 31
+    -- Model free methods 1
+        --- Reading: [http://incompleteideas.net/book/bookdraft2017nov5.pdf SuttonBarto Chapter 6.1-6.5], [https://ieeexplore.ieee.org/abstract/document/735224 BradtkeYdstieBarto94], Optional: [https://arxiv.org/abs/1905.12842 KrauthTuRecht2019]
+        --- Methods/Algorithms: TD-learning, Q-learning, policy iteration
+        --- Scribe: Raphael Van Hoffelen, [scribe-notes/lecture19.pdf lecture notes]
+        
+- Lecture 20: Nov 05
+-- Model free methods 2: student led presentation on if good representations are sufficient for efficient reinforcement living.
+        --- Paper: [https://arxiv.org/pdf/1910.03016.pdf DuEtAl2019]
+        --- Presenter: Karl Schmeckpeper
+        
+- Lecture 21: Nov 07
+-- Model free methods 3
+        --- Reading: [https://www.annualreviews.org/doi/pdf/10.1146/annurev-control-053018-023825 Sections 3.3, 4.2, 5 of Recht19], [https://arxiv.org/pdf/1801.05039.pdf FazelGeKakadeMesbahi2019], Optional: a great talk by Maryam Fazel on [https://www.youtube.com/watch?v=5hMhGM0NOHI gradient based methods for linear control] from L4DC 2019.
+        --- Methods/Algorithms: REINFORCE, Policy Gradient, Random Search
+        --- Scribe: Walker Gosrich, [scribe-notes/lecture21.pdf lecture notes]
+        
+- Lecture 22: Nov 12
+-- Model free methods 4: student led presentation on the gap between model-free and model-based methods for LQR
+        --- Reading: [https://arxiv.org/abs/1812.03565 TuRecht2018]
+        --- Presenter: Maria-Elisabeth Tzes
+        
+- Additional Resources:
+    -- \[Bertsekas\] [https://web.mit.edu/dimitrib/www/RLbook.html Reinforcement Learning and Optimal Control]
+    -- \[BersekasTsitsiklis\] [http://athenasc.com/ndpbook.html Neuro-dynamic Programming]
+    -- \[KrauthTuRecht2019\] [https://arxiv.org/abs/1905.12842 Finite-time Analysis of Approximate Policy Iteration for the Linear Quadratic Regulator], Krauth, Tu, and Recth, 2019
+        
+=== Safe Learning and Control
+    
+- Lecture 23: Nov 14
+    -- Safe learning and control 1
+        --- Reading: [https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-241j-dynamic-systems-and-control-spring-2011/readings/MIT6_241JS11_chap13.pdf Basic Lyapunov Theory I], [https://stanford.edu/class/ee363/lectures/lyap.pdf Basic Lyapunov Theory II], [https://stanford.edu/class/ee363/lectures/io-lyap.pdf Control Lyapunov Functions]
+        --- Methods/Algorithms: Lyapunov functions, Control Lyapunov functions, Global Asymptotic Stability, Global Exponential Stability
+        --- Scribe: Siddharth Singh, 
+        
+- Lecture 24: Nov 19
+-- Safe learning and control 2
+        --- Reading: [https://stanford.edu/class/ee363/lectures/estim.pdf Estimation], [http://www.gaussianprocess.org/gpml/chapters/RW2.pdf Regression using Gaussian Processes]
+        --- Methods/Algorithms: Gaussian Processes
+        --- Scribe: Alena Rodionova, [scribe-notes/lecture24.pdf lecture notes]
+        
+- Lecture 25: Nov 21
+-- Safe learning and control 3: student led presentation on control barrier functions
+        --- Paper: [https://arxiv.org/abs/1903.11199 AmesEtAl19]
+        --- Presenter: Hyunjoo Oh 
+        
+- Lecture 26: Nov 26
+-- Safe learning and control 4: student led presentation on safe reinforcement learning with stability guarantees
+        --- Reading: [https://arxiv.org/abs/1705.08551 BerkenkampEtAl17]
+        --- Presenter: Mengyuan Li
+        
+- Lecture 26*: Nov 27
+-- Bonus lecture on safety and verification of Deep Neural Nets
+    --- Reading: [https://arxiv.org/abs/1906.04893 FazlyabRobeyMorariPappas19] [https://arxiv.org/abs/1910.04249 FazlyabMorariPappas19a], [https://arxiv.org/abs/1903.01287 FazlyabMorariPappas19b]
+    --- Presenter: [https://www.seas.upenn.edu/~mahyarfa/ Mahyar Fazlyab]
+        
+=== Final Project Presentations
+    
+- Lecture 27: Dec 03
+-- Final project presentations 1 
+        
+- Lecture 28: Dec 05
+-- Final project presentations 2
+    
+~~~
+{}{raw}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49484039-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-49484039-2');
+</script>
+~~~
+
+
+

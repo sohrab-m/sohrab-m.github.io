@@ -1,0 +1,71 @@
+# jemdoc: menu{MENU}{index.html}
+# jemdoc: menu{MENU}{../../}
+= ESE 618, Fall 2021 -- Final Project
+
+The final project structure and evaluation criteria are inspired by [https://wensun.github.io/CS6789projects.html CS6789] at Cornell.
+
+== Important Dates
+- *Project proposal due 10/01*
+- *Midterm report due: 11/22*
+
+Tentative due dates:
+
+- Final report due: 12/22
+
+== Grading
+
+- Project proposal: 5\%
+- Midterm report: 10\%
+- Final report due: 25\%
+
+== Reports
+
+- *Report Format:* we will use [https://www.l4dc.org L4DC] (PMLR) format. You must use the [https://l4dc.ethz.ch/wp-content/uploads/2021/04/l4dc.zip L4DC LaTex format].
+
+- *Project proposal:* Your proposal should be 2 pages maximum (not including references), and should include title, team members, abstract, related works, problem formulation and goals.
+
+- *Midterm Report:* Your report should be 4 pages maximum (not including references). Your midterm report should build on your project proposal, and outline your solution approach, current progress and preliminary results, as well as highlight challenges that you are facing.
+
+- *Final Report:* Your report should be 10 pages maximum (not including references and supplementary material). Your final report will be evaluated by the following criteria:
+    -- *Merit:* Is your problem formulation and solution strategy well-motivated?  Can you justify the complexity-level of your approach?
+    -- *Technical depth:* Is your project technically challenging? Did you write your own code, or did you use a available software packages?  While it is ok for a project to lean more towards theory or implementation, the sum of theoretical + implementation efforts should remain consant (i.e., if you use existing software packages rather than write your own code, the theoretical component of your project should be more ambitious).
+    -- *Presentation:* Are your solution approach, assumptions, results, and interpretations of experimental/theoretical outcomes clearly explained and/or justified?  Is the report clearly and written? Are the mathematical arguments rigorous and easy to follow? Are graphs/visualizations clear? 
+    
+    
+== Project Ideas
+
+We provide a few project ideas below. Studying existing "L4DC" theory papers and reproducing proofs is also a good option for the course project.  Numerical experiments used to verify conclusions or test conjectures are encouraged.
+
+- Learning to control the Linear Quadratic Regulator: Conduct a survey on results characterizing regret bounds for linear quadratic optimal control, e.g., [https://arxiv.org/abs/1805.09388 Dean et al.], [https://arxiv.org/abs/1902.07826 Mania et al.], [https://arxiv.org/abs/2001.09576 Simchowitz \& Foster].
+
+- System identification for partially observed systems: Understand and survey how non-asymptotic guarantees for partially observed systems can be obtained, e.g., [https://arxiv.org/abs/1902.00768 Simchowitz et al.], [https://arxiv.org/abs/1806.05722 Oymak \& Ozay]. Can you integrate these results methods from low-rank matrix recovery, e.g. [https://epubs.siam.org/doi/abs/10.1137/070697835 Recht et al.]?
+
+- Learning Kalman Filters from data: Conduct a survey on results characterizing the sample-complexity and/or online regret incurred when learning Kalman Filters from data, e.g., [https://arxiv.org/abs/1903.09122 Tsiamis \& Pappas], [https://arxiv.org/abs/2002.05141 Tsiamis \& Pappas].  Can you integrate these results with learning LQR results for bounds on LQG synthesis, e.g. [https://arxiv.org/abs/1902.07826 Mania et al.]?
+
+- System identification for sparse systems: Conduct a survey on results characterizing the sample-complexity of learning linear systems that have additional structure (e.g., sparse A and B matrices, as in [https://arxiv.org/abs/1904.09396 Fattahi et al.], [https://arxiv.org/abs/1011.0415 Bento et al.].   Can you prove similar results for other types of useful structure? Can you extend these methods to scale favorably with system spectral radius?
+
+- Non-traditional control metrics: Conduct a survey and comparison of results on novel linear control metrics such as non-stochastic control e.g., [https://arxiv.org/abs/1911.12178 Hazan et al.], regret-optimal control, e.g., [https://arxiv.org/abs/2010.10473 Goel \& Hassibi], and competitive control, e.g., [https://arxiv.org/abs/2107.13657 Goel \& Hassibi], [https://arxiv.org/abs/2106.09659 Li et al.].  Can you cook up other interesting control metrics and solve for controllers that optimize for them?
+
+- Learning in constrained linear systems: Conduct a survey of results relating to learning to control constrained linear systems, e.g., [https://arxiv.org/abs/1809.10121 Dean et al.], [https://arxiv.org/abs/2010.04891 Li et al.].  Can you extend these results to classes of nonlinear systems?
+
+- Safe learning in nonlinear systems: Lyapunov and Barrier methods have proven to be effective tools in guaranteeing stability and safety for nonlinear control affine systems, e.g., [https://arxiv.org/abs/1705.08551 Berkenkamp et al.], [https://arxiv.org/abs/1912.10099 Taylor et al.].  Can you provide regret bounds for safe learning and control?
+
+- System identification for nonlinear systems: Conduct a survey on papers aimed at providing sample-complexity bounds for nonlinear system [https://arxiv.org/abs/1809.03019 Oymak], [https://arxiv.org/abs/2006.10277 Mania et al.], [https://arxiv.org/abs/2002.08538 Sattar \& Oymak], [https://arxiv.org/abs/2004.14681 Foster et al.], [https://arxiv.org/abs/1908.09915 Bahmani \& Romberg]
+
+- Contraction metrics in control: Conduct a survey on papers that use tools from contraction theory for the analysis/design of learning algorithms for nonlinear systems, e.g., [https://arxiv.org/abs/1907.13122 Singh et al.], [https://arxiv.org/abs/2011.13101 Boffi et al.], [https://arxiv.org/abs/2011.12569 Sun et al.], [https://arxiv.org/abs/2102.09161 Tu et al.].  Can you apply these ideas in other contexts?
+
+- Policy optimization methods: conduct a survey on results showing that direct policy optimization is effective for linear optimal control, e.g., [https://arxiv.org/abs/1801.05039 Fazel et al.], [https://viterbi-web.usc.edu/~mihailo/papers/mohzarsoljovCDC19.pdf Mohammadi et al.], [https://arxiv.org/abs/2102.04393 Zheng et al.], [https://arxiv.org/abs/1910.09496 Zhang et al.].  Can you extend these ideas to a class of nonlinear systems?
+
+~~~
+{}{raw}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49484039-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-49484039-2');
+</script>
+
+~~~

@@ -1,0 +1,25 @@
+\begin{thebibliography}{1}
+
+\bibitem{Bousquet}
+Olivier Bousquet and André Elisseeff.
+\newblock Stability and generalization.
+\newblock {\em Journal of Machine Learning Research}, 2:499--526, 06 2002.
+
+\bibitem{trainfaster}
+Moritz Hardt, Benjamin Recht, and Yoram Singer.
+\newblock Train faster, generalize better: Stability of stochastic gradient
+  descent.
+\newblock In {\em ICML}, 2015.
+
+\bibitem{betterrate}
+Vitaly {Feldman} and Jan {Vondrak}.
+\newblock {High probability generalization bounds for uniformly stable
+  algorithms with nearly optimal rate}.
+\newblock {\em arXiv e-prints}, page arXiv:1902.10710, Feb 2019.
+
+\bibitem{Nesterov2018}
+Yurii Nesterov.
+\newblock {\em Smooth Convex Optimization}, pages 59--137.
+\newblock Springer International Publishing, Cham, 2018.
+
+\end{thebibliography}

@@ -1,0 +1,25 @@
+\begin{thebibliography}{1}
+
+\bibitem{mcdiarmid_1989}
+Colin McDiarmid.
+\newblock {\em On the method of bounded differences}, page 148–188.
+\newblock London Mathematical Society Lecture Note Series. Cambridge University
+  Press, 1989.
+
+\bibitem{Shalev-Shwartz:2014:UML:2621980}
+Shai Shalev-Shwartz and Shai Ben-David.
+\newblock {\em Understanding Machine Learning: From Theory to Algorithms}.
+\newblock Cambridge University Press, New York, NY, USA, 2014.
+
+\bibitem{Vapnik:1995:NSL:211359}
+Vladimir~N. Vapnik.
+\newblock {\em The Nature of Statistical Learning Theory}.
+\newblock Springer-Verlag, Berlin, Heidelberg, 1995.
+
+\bibitem{Bartlett:2003:RGC:944919.944944}
+Peter~L. Bartlett and Shahar Mendelson.
+\newblock Rademacher and gaussian complexities: Risk bounds and structural
+  results.
+\newblock {\em J. Mach. Learn. Res.}, 3:463--482, March 2003.
+
+\end{thebibliography}

@@ -1,0 +1,126 @@
+# jemdoc: menu{MENU}{index.html}
+# jemdoc: menu{MENU}{../../}
+= ESE 605, Spring 2020 -- Modern Convex Optimization
+
+*Instructor:* Nikolai Matni ([nmatni@seas.upenn.edu nmatni@seas.upenn.edu]), Assistant Professor, ESE Department
+
+*TAs:* Shaoru Chen ([srchen@seas.upenn.edu srchen@seas.upenn.edu]), Han Wang ([wanghan2@sas.upenn.edu wanghan2@sas.upenn.edu]), Alexandre Amice ([amice@seas.upenn.edu amice@seas.upenn.edu]) 
+
+*Lectures:* Tu/Th 3:00-4:30pm in LRSM Auditorium
+
+*Syllabus*: [./Syllabus.pdf ESE605-001]
+
+*If you are trying to register for the course:* submit your request at [https://docs.google.com/forms/d/e/1FAIpQLSermt9JnMJxRLoDkMkgvoCBtUnZD5XUkrQXhw-lz5G4LHbb4A/viewform  Permit Requests]
+
+== Office hours
+- *Nikolai's OHs:* Tu/Th 4:30-5:30pm, Levine 374
+- *Shaoru's OHs:* Fr 12:00-1:30pm, Moore 317
+- *Han's OHs:* Mon 2:00-4:00pm, Moore 317
+- *Alexandre's OHs:* Wed 2:30-4:30pm, Moore 317
+
+== Course description
+In this course, you will learn to recognize and solve convex optimization problems that arise in applications across engineering, statistics, operations research, and finance.  Examples will be chosen to illustrate the breadth and power of convex optimization, ranging from systems and control theory, to estimation, data fitting, information theory, and machine learning.  A tentative list, subject to change, of what we will cover includes: convex sets, functions, and optimization problems; the basics of convex analysis; least-squares, linear and quadratic programs, semidefinite programs, minimax, extremal volume, and other problems; optimality conditions, duality theory, theorems of alternatives, and applications; interior-point algorithms for solving convex optimization problems, and their complexity analysis; applications to signal processing, statistics and machine learning, control, digital and analog circuit design, and finance. 
+
+== Course objectives
+- to give students the tools and skills needed to identify convex optimization problems that arise in applications
+- to introduce the basic theory of convex optimization problems, concentrating on results that are useful in understanding, improving, and extending computational methods
+- to give students a deep and foundational understanding of how such problems are solved, and hands on experience in solving them
+- to give students the background needed to feel comfortable in applying these methods in their own research work and/or applications
+
+
+== About the Course
+=== Prerequisites
+This is a math intensive course.  A solid foundation in linear algebra (at the level of Math 314), as well as comfort with analysis, probability, and statistics at an advanced undergraduate level is required.  Familiarity with one of Matlab, Python, or Julia.  Undergraduates need permission. 
+
+=== Intended audience
+This course will benefit anyone who uses or will use scientific computation or optimization in engineering, statistics, signal processing, or related work (e.g., machine learning, finance).  More specifically, convex optimization problems are likely to pop up in the work of people in the following departments and fields: Electrical Engineering (signal\/image processing, communications, control), Aero\/Astro Engineering (guidance, navigation, control, design), Mechanical & Civil Engineering (robotics, control, structural analysis), Computer Science (machine learning, robotics, computer graphics, algorithms & complexity, computer networking), & Operations Research (Wharton).
+
+=== Schedule
+*Please use the following updated schedule and grading, which starts with Week 1 after Spring Break, for the rest of the semester.  The previous course schedule can be found below for your reference.*
+
+~~~
+{}{table}{SCHEDULE}
+Date          | Topic          | Reading | Homework ||
+Week 1 \n 3\/24, 3\/26 | [lecture-slides/duality.pdf Duality]| Chapter 5 |  [hw/ese605hw6.pdf Homework 6] *(due 4\/06)* ||
+Week 2\n 3\/31, 04\/02 | [lecture-slides/approx.pdf Approximation and fitting]\n [lecture-slides/stat.pdf Statistical estimation] | Chapter 6, Chapter 7 | No new homework ||
+Week 3\n 4\/07, 4\/09 | [lecture-slides/stat.pdf Statistical Estimation] \n [lecture-slides/geom.pdf Geometric problems]| Chapters 7, 8 | [hw/ese605hw7.pdf Homework 7] *(due 4\/20)* ||
+Week 4\n 4\/14, 4\/16 | [lecture-slides/unconstrained.pdf Unconstrained minimization] | Appendix C, Chapter 9| No new homeowrk ||
+Week 5\n 4\/21, 4\/23 | [lecture-slides/equality.pdf Equality constrained minimization] | Chapter 10| [hw/ese605hw8.pdf Homework 8] *(due 4\/29)* (will be shorter) ||
+Week 6\n 4\/28 | [lecture-slides/barrier.pdf Interior-point methods]| Chapter 11| no new homework ||
+4\/30-5\/03 | Reading days | -- | -- ||
+05\/05 | Likely date for take home final| N/A | *Final exam*
+~~~
+
+=== Grading
+- Homework (20%): there will be weekly homework assignments, handed out on Tuesday, and due the following Friday by 5pm.  The homework assignments *must be LateXed and submitted on Canvas via Gradescope*.  Please use the [https://web.stanford.edu/class/ee364b/latex_templates/ LaTeX templates] provided by Stephen Boyd's EE364b course, and follow the recommended style guide.  You will be given *5 free late days* which you may use as you please throughout the semester, after which no late assignments will be accepted.  You are allowed, even encouraged, to work on homework in small groups, but you must write up your own homework solutions and code to hand in.  Homework will be graded on a scale of 0-4.
+- Midterm exam (30%): there will be an in-class, 75 minute, closed book, closed notes midterm scheduled for *3\/03*.
+- *Final take-home exam (50%): there will be a 24 hour final take-home exam scheduled during the final exam period.  We have tentatively scheduled this for 5/05.*  Please refer to the [http://web.stanford.edu/class/ee364a/final.html Stanford EE364a] offering of this course for an idea of what the final exam will look like, as well as the logistics of how it will be administered.
+
+Note that these weights are approximate, and we reserve the right to change them later.
+
+*Code of Academic Integrity:* All students are expected to adhere to the University’s [https://catalog.upenn.edu/pennbook/code-of-academic-integrity/ Code of Academic Integrity].  
+
+\n
+=== Previous schedule
+The following schedule is tentative and subject to change.  
+~~~
+{}{table}{SCHEDULE}
+Date          | Topic          | Reading | Homework ||
+Week 1\n 1\/16 | [lecture-slides/logistics.pptx Logistics], [lecture-slides/intro.pdf Introduction]   | Chapter 1\n Appendix A| Sign up for Canvas & Piazza ||
+Week 2\n 1\/21, 1\/23 | [lecture-slides/sets.pdf Convex sets] | Chapter 2| [hw/ese605hw1.pdf Homework 1] (due 1\/31) ||
+Week 3\n 1\/28, 1\/30 | [lecture-slides/functions.pdf Convex functions] | Chapter 3 | [hw/ese605hw2.pdf Homework 2] (due 2\/07) ||
+Week 4\n 2\/04, 2\/06 | [lecture-slides/problems.pdf Convex optimization problems] | Chapter 4 | [hw/ese605hw3.pdf Homework 3] (due 2\/14) ||
+Week 5\n 2\/11, 2\/13 | [lecture-slides/problems.pdf Convex optimization problems]\n [lecture-slides/duality.pdf Duality]| Chapter 4, 5 | [hw/ese605hw4.pdf Homework 4] (due 2\/21) ||
+Week 6\n 2\/18, 2\/20 | [lecture-slides/duality.pdf Duality]| Chapter 5 | [hw/ese605hw5.pdf Homework 5] *(due 03\/10)* ||
+Week 7\n 2\/25, 2\/27 | [lecture-slides/approx.pdf Approximation and fitting] | Chapter 6 | *Midterm on 3\/03* ||
+Week 8\n 3\/03, 3\/05 | [lecture-slides/stat.pdf Statistical estimation] | Chapter 7 | Homework 6 (due 3\/20) ||
+Spring break | relax | have fun | get some rest ||
+Week 9\n 3\/17, 3\/19 | [lecture-slides/stat.pdf Statistical Estimation] \n [lecture-slides/geom.pdf Geometric problems]| Chapters 7, 8 | Homework 7 (due 3\/27) ||
+Week 10\n 3\/24, 3\/26 | [lecture-slides/geom.pdf Geometric problems]\n [lecture-slides/num-lin-alg.pdf Numerical Linear Algebra Review]| Chapter 8\n Appendix C | Homework 8 (due 4\/03) ||
+Week 11\n 3\/31, 4\/02 | [lecture-slides/unconstrained.pdf Unconstrained minimization] | Chapter 9| Homework 9 (due 4\/10) ||
+Week 12\n 4\/07, 4\/09 | [lecture-slides/equality.pdf Equality constrained minimization] | Chapter 10| Homework 10 (due 4\/17) ||
+Week 13\n 4\/14, 4\/16 | [lecture-slides/barrier.pdf Interior-point methods]| Chapter 11| Homework 11 (due 4\/24) ||
+Week 14\n 4\/21, 4\/23 | Advanced topic: TBD | TBD | *Final programming\n assignment (due 4\/29)* ||
+Week 15\n 4\/28 | [lecture-slides/conclusion.pdf Conclusions] | N/A | *Final exam\n date TBD*
+~~~
+
+
+
+=== Textbook
+The textbook is Convex Optimization by Boyd and Vandenberghe, available [https://web.stanford.edu/~boyd/cvxbook/ online].
+
+Additional optional resources that may prove useful include:
+- J. Renegar, A Mathematical View of Interior Point Methods for Convex Optimization, 1998
+- A. Ben-Tal and A. Nemirovski, Lectures on Modern Convex Optimization: Analysis, Algorithms, and Engineering Applications, SIAM, 2001
+- D. Bertsekas, A. Nedic, and A Ozdaglar, Convex Analysis and Optimization , 2003
+- L. El Ghaoui's [https://people.eecs.berkeley.edu/~elghaoui/Teaching/EE227BT/LectureNotes_EE227BT.pdf EE227BT Lecture Notes]
+
+=== Software
+You will use one of [http://cvxr.com/cvx/ CVX] (Matlab), [https://www.cvxpy.org/ CVXPY] (Python), or [http://convexjl.readthedocs.org/ Convex.jl] (Julia), to write simple scripts. We refer to CVX, CVXPY, and Convex.jl collectively as CVX*.
+
+===  Previous Grading
+- Homework (20%): there will be weekly homework assignments, handed out on Tuesday, and due the following Friday by 5pm.  The homework assignments *must be LateXed and submitted on Canvas via Gradescope*.  Please use the [https://web.stanford.edu/class/ee364b/latex_templates/ LaTeX templates] provided by Stephen Boyd's EE364b course, and follow the recommended style guide.  You will be given *5 free late days* which you may use as you please throughout the semester, after which no late assignments will be accepted.  You are allowed, even encouraged, to work on homework in small groups, but you must write up your own homework solutions and code to hand in.  Homework will be graded on a scale of 0-4.
+- Midterm exam (30%): there will be an in-class, 75 minute, closed book, closed notes midterm scheduled for *3\/03*.
+- Final programming assignment (15%): there will be a final programming assignment due on the last day of classes *4\/29*. 
+- Final exam (35%): there will be a final exam scheduled during the final exam period.
+Note that these weights are approximate, and we reserve the right to change them later.
+
+*Code of Academic Integrity:* All students are expected to adhere to the University’s [https://catalog.upenn.edu/pennbook/code-of-academic-integrity/ Code of Academic Integrity].  
+
+
+~~~
+{}{raw}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49484039-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-49484039-2');
+</script>
+
+~~~
+
+
+

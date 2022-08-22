@@ -1,0 +1,459 @@
+
+
+
+\documentclass{article}[12pt]
+\usepackage{fullpage,graphicx, setspace, latexsym, cite,amsmath,amssymb,color,subfigure}
+%\usepackage{epstopdf}
+%\DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg,.mps} 
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+\bibliographystyle{unsrt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{defn}{Definition}
+\newtheorem{ex}{Example}
+\usepackage{float}
+
+\def\R{\mathbb{R}}
+\def\A{\mathcal{A}}
+\def\Eps{\mathcal{E}}
+\def\E{\mathbb{E}}
+\def\V{\mathbb{V}}
+\def\F{\mathcal{F}}
+\def\G{\mathcal{G}}
+\def\H{\mathcal{H}}
+\def\S{\mathcal{S}}
+\def\P{\mathbb{P}}
+\def\1{\mathbf{1}}
+\def\n{\nappa}
+\def\h{\mathbf{w}}
+\def\v{\mathbf{v}}
+\def\x{\mathbf{x}}
+\def\X{\mathcal{X}}
+\def\Y{\mathcal{Y}}
+\def\Z{\mathcal{Z}}
+\def\D{\mathcal{D}}
+\def\eps{\epsilon}
+\def\y{\mathbf{y}}
+\def\e{\mathbf{e}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\innprod}[2]{\left\langle#1, #2\right\rangle}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   % \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \setlength{\headsep}{10mm}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf ESE 680-004: Learning and Control
+   \hfill Fall 2019} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Lecture #1: #2  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Lecturer: #3 \hfill Scribes: #4} }
+      \vspace{2mm}}
+   }
+   \end{center}
+   \markboth{Lecture #1: #2}{Lecture #1: #2}
+
+   \noindent{\bf Disclaimer}: {\it These notes have not been subjected to the
+   usual scrutiny reserved for formal publications. }
+   \vspace*{4mm}
+}
+
+%notation
+
+\def \E{\mathbb{E}}
+\def \P{\mathbb{P}}
+\def \R{\mathbb{R}}
+
+\begin{document}
+
+\lecture{16}{Algorithmic Stability and Stochastic Gradient Descent}{Nikolai Matni}{Jialin Mao}
+
+\section{Introduction}
+In this lecture we continue our study on generalization error bounds. Let us first recall the problem setup. 
+Let $\X, \Y$ be an input and an output space, respectively. Denote $\Z = \X \times \Y$ and let $\D$ be an unknown distribution on $\Z$. Given a function class $\F \subset \Y^\X$ and a loss function $\ell: \F \times \Z \to \R$, we would like to find $f \in \F$ that minimizes the risk
+\[
+R[f] = \E_{z \sim \D}[\ell(f, z)]. 
+\] 
+The difficulty here is that the distribution is unknown and we only have access to a data set $S = \{z_1, \ldots, z_N\}$ consisting of i.i.d. samples from the distribution. A natural workaround is to find the minimizer of the empirical risk 
+\[
+  R_S[f] = \frac{1}{N} \sum_{i = 1}^{N} \ell(f, z_i) 
+\]
+and the crucial problem here is to bound the generalization error 
+\[
+R[f] - R_S[f]. 
+\]
+In the previous lecture we proved uniform generalization bounds based on concentration inequalities and some measure of the function class complexity. 
+In this lecture, we will adopt an alternative perspective and view the problem through the lens of stochastic optimization. Instead of considering all possible functions within a function class, we will focus on functions found by stochastic optimization and prove generalization bounds based on algorithmic stability. 
+
+The lecture note will be organized as follows: we will start by introducing notions of stochastic gradient algorithms in section \ref{sgd} and show that they find solutions with vanishing excess risk for convex loss function. 
+After introducing notions of algorithmic stability in section \ref{stability}, we will show how stability guarantees generalization error and proceed to prove the stability of stochastic gradient methods in section \ref{sec4}. We will conclude with stability inducing property of many commonly used optimization techniques in  section \ref{inducing}.
+
+
+\section{Stochastic Gradient Method} \label{sgd}
+
+Consider a function class parameterized by $\theta \in \Theta$, where $\Theta$ is convex and compact. Then each function $f \in \F$ can be characterized by its parameterization $\theta$ and we may write 
+\[
+   R[\theta] \coloneqq R[f_\theta], \qquad R_S[\theta] \coloneqq R[f_\theta], \qquad \ell(\theta, z) \coloneqq \ell(f_\theta, z).
+\]
+Stochastic gradient descent (SGD) is an iterative algorithm that updates $\theta$ based on the gradient of the loss function at a randomly sampled data point $z_k = (x_k, y_k) \sim \D$:
+\begin{equation} \label{updaterule}
+\theta_{k+1} = G_{\ell, \alpha}(\theta_k) \coloneqq \Pi_{\Theta} \left( \theta_k - \alpha_k \nabla \ell(\theta_k, z_k) \right), 
+\end{equation}
+where $\alpha_k$ is the learning rate and $\Pi_{\Theta}$ is the Euclidean projection onto $\Theta$. $G_{\ell, \alpha}(\theta)$ is called the update rule. 
+
+
+
+\subsection{Stochastic Optimization Bounds}
+Let $\{\theta_i\}_{i=1}^n$ be the trajectory of SGD according to the update rule (\ref{updaterule}), and let 
+\begin{equation}
+   \label{eq:weighted}
+\bar{\theta}_n \coloneqq \sum_{i=1}^n w_i \theta_i, \qquad \text{where } w_i = \frac{\alpha_i}{\sum_{i=1}^n \alpha_i}     
+\end{equation}
+be the weighted running average of the trajectory. Our first result below shows that for loss functions that are convex in $\theta$, $\bar{\theta}_n$ asymptotically minimizes the population risk (over $\Theta$):  
+\begin{theorem}
+  Suppose $\ell(\cdot, z)$ is a convex function for all $z \in \Z$, and $\norm{\nabla \ell(\theta, z)} \leq G$ for all $\theta \in \Theta, z \in \Z$, and suppose $\text{diam}(\Theta) \leq D$. Let $R_\star = \min_{\theta \in \Theta} R[\theta]$ be the best possible true risk achievable by a $\theta \in \Theta$. Set the step size $\alpha_i = \frac{D}{G\sqrt{n}}$. Then, with probability at least $1 - \delta$, we have 
+  \begin{equation}
+     \label{excess}
+  R[\bar{\theta}_n] \leq R_\star + \frac{DG(1 + \sqrt{2 \log(1/\delta)})}{\sqrt{n}}   
+  \end{equation}
+\end{theorem}
+\begin{proof}
+Denote 
+\[
+   \theta_\star = \arg\min_{\theta \in \Theta} R[\theta], \qquad g_i = \nabla \ell(\theta_i, (x_i, y_i)), \qquad D_i = \norm{\theta_i - \theta_\star}, \qquad \Delta_i = g_i - \nabla R[\theta_i].
+\]
+
+Then 
+\begin{align*}
+   R[\bar{\theta}_n] - R[\theta_\star] &\leq \E_z \left[ \sum_{i=1}^n  w_i \ell \left( \theta_i, z \right) \right] - R[\theta_\star]  \qquad \text{(Jensen's Inequality)}\\
+   &= \sum_{i = 1}^{n} w_i(R[\theta_i] - R_{\star}) 
+   \leq \sum_{i = 1}^{n} w_i \innprod{\nabla R(\theta_i)}{\theta_i - \theta_\star} \qquad \text{(convexity)} \\
+   &= \frac{1}{\sum_{i=1}^n \alpha_i} \sum_{i = 1}^{n} [\alpha_i \innprod{g_i}{\theta_i-\theta_\star} - \alpha_i \innprod{\Delta_i}{\theta_i - \theta_\star}] \\
+   &\leq \frac{1}{2\sum_{i=1}^n \alpha_i} \sum_{i=1}^n \left( D_i^2 - D_{i+1}^2 + \alpha_i^2 \norm{g_i}^2 - 2\alpha_i \innprod{\Delta_i}{\theta_i - \theta_\star} \right) \qquad (\star) \\
+   &= \frac{1}{2\sum_{i=1}^n \alpha_i} \left( D_1^2 - D_{n+1}^2 + \sum_{i=1}^n \left( \alpha_i^2 \norm{g_i}^2 - 2\alpha_i \innprod{\Delta_i}{\theta_i - \theta_\star} \right) \right) \\
+   &\leq \frac{D^2 + G^2 \sum_{i=1}^n \alpha_i^2}{2\sum_{i=1}^n \alpha_i} - \sum_{i = 1}^{n} w_i \innprod{\Delta_i}{\theta_i - \theta_\star}.
+\end{align*}
+In $(\star)$ we used a key inequality:
+\[
+\norm{\theta_{i+1} - \theta_\star}^2 \leq \norm{\theta_i - \theta_\star}^2 - 2\alpha_i \innprod{g_i}{\theta_i - \theta_\star} + \alpha_i^2 \norm{g_i}^2. 
+\]
+To see this, notice 
+\begin{align*}
+\norm{\theta_{i+1} - \theta_\star}^2  &= \norm{\theta_{i+1} - \theta_i + \theta_i - \theta_\star}^2 \\
+&= \norm{\theta_{i+1} - \theta_i}^2 + 2\innprod{\theta_{i+1} - \theta_i}{\theta_i - \theta_\star} + \norm{\theta_i - \theta_\star}^2 \\
+&= \norm{\theta_i - \theta_\star}^2 + \norm{\Pi_\Theta(\theta_i - \alpha_i g_i) - \Pi_\Theta(\theta_i)}^2 + 2 \innprod{\Pi_\Theta(\theta_i - \alpha_i g_i)}{\theta_i - \theta_\star} \\
+&\leq \norm{\theta_i - \theta_\star}^2 + \alpha_i^2 \norm{g_i}^2 + 2 \innprod{\Pi_\Theta(\theta_i - \alpha_i g_i)}{\theta_i - \theta_\star}  \\
+&= \norm{\theta_i - \theta_\star}^2 + \alpha_i^2 \norm{g_i}^2 - 2 \alpha_i \innprod{g_i}{\theta_i - \theta_\star}, 
+\end{align*}
+where for the inequality we used the fact that $\norm{\Pi_{\Theta}(u) - \Pi_\Theta(v)}\leq \norm{u - v}$ for any convex set $\Theta$ (see Lemma \ref{proximal} and comments for a proof), and in the last step we use the fact that $\theta_i - \theta_\star \in \Theta$, so $\innprod{v}{\theta_i - \theta_\star} = \innprod{\Pi_{\Theta}(v)}{\theta_i - \theta_\star}$ for any $v$ in the ambient space.
+
+Setting $\alpha_i = \frac{D}{G\sqrt{n}}$, we have 
+\begin{equation}
+   \label{eq:3}
+R[\theta_n] - R[\theta_\star] \leq \frac{DG}{\sqrt{n}} - \frac{1}{n} \sum_{i = 1}^{n} \innprod{\Delta_i}{\theta_i - \theta_\star}.
+\end{equation}
+Now notice that 
+\[
+   X_j \coloneqq \frac{1}{n} \sum_{i=1}^j \innprod{\Delta_i}{\theta_i - \theta_\star}
+\] is a martingale (since $\E[\Delta_{j+1} | \theta_1, \ldots, \theta_j] = 0$) and by Cauchy-Schwartz we have 
+\[
+\abs{X_{j+1} - X_j} = \frac{1}{n} \abs{\innprod{\Delta_i}{\theta_i - \theta_\star}} \leq \frac{2GD}{n}  , 
+\]  so by Azuma's inequality we have 
+\[
+\P [- X_n \geq t] \leq \exp\left( -\frac{nt^2}{2 G^2 D^2} \right) . 
+\]
+Inverting the probability, we have with probability at least $1 - \delta$, 
+\[
+- \frac{1}{n} \sum_{i=1}^n \innprod{\Delta_i}{\theta_i - \theta_\star}\leq DG \sqrt{\frac{2\log(1/\delta)}{n}}
+\] 
+Combining this with (\ref{eq:3}), we have the desired high probability bound.
+\end{proof}
+Notice that this is not a generalization bound, but can be combined with a generalization bound to give a bound on the population risk of SGD.
+
+
+\section{Algorithmic Stability} \label{stability}
+In this section we will introduce the notion of algorithmic stability. Consider a learning algorithm $\A : \Z^n \to \F$ that maps a training set $S$ into a function $\A(S)$. 
+The notion of stability we will be using in this note is uniform stability (see other forms of stability in \cite{Bousquet}). 
+Informally, an algorithm is uniformly stable if a single change in the input results in almost no change in prediction, the formal definition is given below:
+\begin{defn}[Uniform Stability \cite{Bousquet}]
+   A randomized algorithm $\A$ is $\epsilon$-uniformly stable if for all datasets $S, S' \in \Z^n$ such that $S, S'$ differ in at most one example, we have 
+   \[
+   \sup_z \E_\A[\ell(\A(S); z) - \ell(\A(S'), z)]  \leq \epsilon.
+   \]
+\end{defn}
+
+\subsection{Generalization Bounds Through Algorithmic Stability}
+Now we show how algorithmic stability implies small generalization error. The following theorem proves generalization in expectation:
+\begin{theorem}[Theorem 2.2 \cite{trainfaster}] \label{expectation}
+   Let $\A$ be $\epsilon$-uniformly stable, then 
+   \[
+   \abs{\E_{S, \A} \left[ R_S(\A(S)) - R(\A(S)) \right] }    \leq \epsilon.
+   \]
+\end{theorem}
+\begin{proof}
+Let $S = (z_1, \ldots, z_n)$ and $S' = (z_1', \ldots, z_n')$ be two independent random samples from $D$, and let
+\[
+S^{i} = \{z_1, \ldots, z_{i-1}, z_i', z_{i+1}, \ldots, z_n\},   
+\] be a copy of $S$ with the $i$-th element replaced by $z_i'$. Then 
+\begin{align*}
+   \E_S \E_\A [R_S[\A(S)]] = \E_S \E_\A \left[ \frac{1}{n} \sum_{i=1}^n \ell(\A(S), z_i) \right]  = \E_{S, S'} \E_\A \left[\frac{1}{n} \sum_{i=1}^n \ell(\A(S^{i}), z_i') \right], 
+\end{align*}
+and 
+\begin{align*}
+   \E_S \E_\A[R[\A(S)]] = \E_S \E_\A \E_z[\ell(\A(S), z)] = \E_{S, S'} \E_\A [\ell(\A(S), z_i')], 
+\end{align*} so their difference can be expressed as 
+\[
+\E_{S, \A}[R_S[\A(S)] - R(\A(S))]  = \E_{S, S', \A} \left[ \frac{1}{n}\sum_{i=1}^n \left( \ell(\A(S^i), z_i') - \ell(\A(S), z_i') \right) \right] \leq \epsilon,
+\] since each term in the sum is upper bounded by $\epsilon$ by uniform stability.
+\end{proof}
+We can get high probability bound from theorem \ref{expectation}. 
+Notice that the algorithmic stability also implies that 
+\[
+\abs{R[\A(S)] - R[\A(S^i)]}  \leq \epsilon, 
+\] and 
+\[
+\abs{R_S[\A(S)] - R_{S^i}[\A(S^i)]}  \leq \epsilon, 
+\] so the function $F(S, z) \coloneqq R[\A(S)] - R_S[\A(S)]$ satisfies the bounded difference property and by McDiarmid's inequality and we get
+\[
+   \mathbb{P}\left[R[\mathcal{A}(S)]-R_{S}[\mathcal{A}(S)] \geq \epsilon_{\mathrm{stab}}+t\right] \leq \exp \left(-\frac{t^{2}}{2 \epsilon_{\mathrm{stab}}^{2} n}\right)   
+\]
+Inverting probability, with probability at least $1 - \delta$, we have 
+\begin{equation}
+   \label{eq:highprob}
+R[\A(S)] \leq R_S[\A(S)] \leq \epsilon_{\text{stab}}\left( 1+ \sqrt{2n\log(1/\delta)} \right)   
+\end{equation}
+Notice that this bound is nonvacuous only if $\epsilon_{\text{stab}} = o(1/\sqrt{n})$, with $\epsilon_{\text{stab}} = c/\sqrt{n}$, we can recover the classical bound $O(1/\sqrt{n})$. There are more recent works like \cite{betterrate} that give better high probability bounds. 
+
+
+\section{Algorithmic Stability of SGD} \label{sec4}
+This section will be devoted to proving the algorithmic stability of SGD. We will mainly focus on the case of convex loss function in this note. Some results do carry over to the case where the loss-function is non-convex, provided that the steps are sufficiently small and the number of iterations is not too large. See section 3.5 of \cite{trainfaster} for detailed analysis. 
+
+We will define here several properties of the update rules that characterize how they drive update sequences:
+\begin{defn}[Expansiviy] 
+   An update rule is $\eta$-expansive if 
+   \[
+   \sup_{v, w \in \Theta} \frac{\norm{G(v) - G(w)}}{\norm{v - w}}  \leq \eta
+   \]
+\end{defn}
+\begin{defn}[Boundedness]
+   An update rule is $\sigma$-bounded if 
+   \[
+   \sup_{w \in \Theta} \norm{w - G(w)}  \leq \sigma.
+   \]   
+\end{defn}
+The following lemma explicitly shows how expansiveness and boundedness control the divergence between update sequences:
+\begin{lemma} [Lemma 2.5 \cite{trainfaster}] \label{growth}
+  For two fixed sequences of update rules $G_1, \ldots, G_T$ and $G_1', \ldots, G_T'$, let $w_0 = w_0'$ be a starting point and let $w_{t+1} = G_t(w_t)$, $w_{t+1}' = G_t'(w_t')$ be the sequence of updates evolving according to the update rules. Denote $\delta_t \coloneqq \norm{w_t - w_t'}$, then $\delta_0 = 0$ and we have the recurrence relation 
+  \[
+\delta_{t+1} \leq\left\{\begin{array}{cl}{\eta \delta_{t}} & {G_{t}=G_{t}^{\prime} \text { is } \eta \text {-expansive }} \\ {\min (\eta, 1) \delta_{t}+2 \sigma_{t}} & {G_{t} \text { and } G_{t}^{\prime} \text { are } \sigma \text {-bounded},} \\ {} & {G_{t} \text { is } \eta \text {-expansive}}\end{array}\right.   
+  \]
+\end{lemma}
+
+\begin{proof}
+The first inequality follows directly from the definition of $\eta$-expansiveness. The second inequality is essentially triangular inequality:
+\[
+\begin{aligned}
+   \delta_{t+1} &= \left\|G_t\left(w_{t}\right)-G_t^{\prime}\left(w_{t}^{\prime}\right)\right\| \\ 
+&\leq\left\|G_t\left(w_{t}\right)-w_{t}+w_{t}^{\prime}-G_t^{\prime}\left(w_{t}^{\prime}\right)\right\|+\left\|w_{t}-w_{t}^{\prime}\right\| \\ 
+&\leq \delta_{t}+\left\|G_t\left(w_{t}\right)-w_{t}\right\|+\left\|G_t\left(w_{t}^{\prime}\right)-w_{t}^{\prime}\right\| \\ 
+&\leq \delta_{t}+2 \sigma
+\end{aligned} 
+\]
+and alternatively:
+\[
+\begin{aligned} \delta_{t+1} &=\left\|G_{t}\left(w_{t}\right)-G_{t}^{\prime}\left(w_{t}^{\prime}\right)\right\| \\ &=\left\|G_{t}\left(w_{t}\right)-G_{t}\left(w_{t}^{\prime}\right)+G_{t}\left(w_{t}^{\prime}\right)-G_{t}^{\prime}\left(w_{t}^{\prime}\right)\right\| \\ & \leq\left\|G_{t}\left(w_{t}\right)-G_{t}\left(w_{t}^{\prime}\right)\right\|+\left\|G_{t}\left(w_{t}^{\prime}\right)-G_{t}^{\prime}\left(w_{t}^{\prime}\right)\right\| \\ & \leq\left\|G_{t}\left(w_{t}\right)-G_{t}\left(w_{t}^{\prime}\right)\right\|+\left\|w_{t}^{\prime}-G_{t}\left(w_{t}^{\prime}\right)\right\|+\left\|w_{t}^{\prime}-G_{t}^{\prime}\left(w_{t}^{\prime}\right)\right\| \\ & \leq \eta \delta_{t}+2 \sigma \end{aligned}
+\]
+\end{proof}
+
+The following lemma shows that smoothness of the loss function and its derivative implies expansiveness of the gradient update rule (\ref{updaterule}):
+\begin{lemma} [Lemma 3.3, 3.7 \cite{trainfaster}] \label{expansive}
+  Assume $f$ is $L$-Lipschitz and the gradient of $f$ is $\beta$-Lipschitz, then the follow properties hold:
+  \begin{enumerate}
+   \item $G_{f, \alpha}$ is $(\alpha L)$-bounded.
+   \item Assume in addition that $f$ is convex. Then for any $\alpha \leq 2/\beta$, the gradient update $G_{f, \alpha}$ is $1$-expansive.
+  \end{enumerate} 
+\end{lemma}
+\begin{proof}
+   \begin{enumerate}
+      \item The first property follows directly from definition and the $1$-expansivity of Euclidean projection:
+      \[
+      \norm{w - G_{f, \alpha}(w)} \leq \norm{\alpha \nabla f(w)} \leq \alpha L.
+      \] 
+      \item 
+      Lipschitz assumption on the gradient and convexity together imply the co-coercivity of the gradients (a proof can be found in Theorem 2.1.5 of \cite{Nesterov2018}):
+      \[
+         \langle\nabla f(v)-\nabla f(w), v-w\rangle \geq \frac{1}{\beta}\|\nabla f(v)-\nabla f(w)\|^{2}   
+      \]
+      Therefore 
+      \[
+      \begin{aligned}\left\|G_{f, \alpha}(v)-G_{f, \alpha}(w)\right\|^{2} &=\|v-w\|^{2}-2 \alpha\langle\nabla f(v)-\nabla f(w), v-w\rangle+\alpha^{2}\|\nabla f(v)-\nabla f(w)\|^{2} \\ & \leq\|v-w\|^{2}-\left(\frac{2 \alpha}{\beta}-\alpha^{2}\right)\|\nabla f(v)-\nabla f(w)\|^{2} \\ & \leq\|v-w\|^{2} \end{aligned}
+      \]
+   \end{enumerate}
+\end{proof}
+The lemmas above provide all the essential tools we need to prove the stability of SGD. Intuitively, on two datasets that differ only in one example, SGD performs the same update with high probability, so the final output are close to each other by the expansiveness of the gradient update. In the rare case where SGD selects different example, we can make use of the smoothness properties of the loss function to bound the growth of difference. A formal proof is given below:
+\begin{theorem}[Theorem 3.8 \cite{trainfaster}] \label{sgdstable}
+Assume the loss function is convex and $L$-Lipschitz, and its gradient is $\beta$-Lipschitz. Suppose we run SGD with step size $\alpha_t \leq 2/\beta$ for $T$ steps, then the procedure satisfies uniform stability with 
+\[
+\epsilon_{\text{stab}} \leq \frac{2L^2}{n} \sum_{t=1}^T \alpha_t   
+\]
+\end{theorem} 
+\begin{proof}
+Let $S, S'$ denote two datasets differing only in one point, we want to show 
+\begin{equation}
+   \label{eq:wts}
+\sup_{S, S', z} \E\abs{\ell(\A(S); z) - \ell(\A(S'), z)} \leq \frac{2L^2}{n} \sum_{t=1}^T \alpha_t.
+\end{equation}
+Consider the gradient updates $G_1, \ldots, G_T$ and $G_1', \ldots, G_T'$ induced by running SGD on $S, S'$, respectively. Let $w_T, w_T'$ denote the corresponding outputs.
+
+For a fixed example $z \in \Z$, the Lipschitz condition gives
+\begin{equation}
+   \label{eq:Lip}
+   \mathbb{E}\left|f\left(w_{T} ; z\right)-f\left(w_{T}^{\prime} ; z\right)\right| \leq L \mathbb{E}\left[\delta_T\right],
+\end{equation}
+where $\delta_t = \norm{w_t - w_t'}$ as before. Notice at time step $t$, with probabiliy $1 - 1/n$, the element selected by SGD is the same in both $S, S'$. In this case we have $G_t = G_t'$ so by Lemma \ref{expansive}.2, the update is $1$-expansive and we have $\delta_{t+1} \leq \delta_t$. 
+
+With probability $1/n$, the selected sample is different, in which case we will use that both $G_t$ and $G_t'$ are $\alpha_t L$-bounded by Lemma \ref{expansive}.1. Then by the second inequality in Lemma \ref{growth} we have $\delta_{t+1} \leq \delta_t + 2\alpha_t L$. Then by linearity of expectation we have 
+\[
+      \mathbb{E}\left[\delta_{t+1}\right] \leq\left(1-\frac{1}{n}\right) \mathbb{E}\left[\delta_{t}\right]+\frac{1}{n} \mathbb{E}\left[\delta_{t}\right]+\frac{2 \alpha_{t} L}{n}=\mathbb{E}\left[\delta_{t}\right]+\frac{2 L \alpha_{t}}{n} 
+\] for every $0 \leq t \leq T$, which gives 
+\[
+   \mathbb{E}\left[\delta_{T}\right] \leq \frac{2 L}{n} \sum_{t=1}^{T} \alpha_{t}.
+\] Combining this with (\ref{eq:Lip}), we have 
+\[
+   \mathbb{E}\left|f\left(w_{T} ; z\right)-f\left(w_{T}^{\prime} ; z\right)\right| \leq \frac{2L^2}{n} \sum_{t=1}^T \alpha_t, 
+\]   since this holds for all $S, S', z$, we know the desired inequality (\ref{eq:wts}) holds.
+\end{proof}
+If we use a constant learning rate $\alpha$ and output the averaged model $\bar{w}_T = \frac{1}{T} \sum_{t = 1}^{T}  w_t$ , we could improve the bound by a constant factor (see proof in \ref{averaging}) and get 
+\[
+\epsilon_{\text{stab}} \leq \frac{\alpha T L^2}{n} .
+\] 
+Combining this with the high probability bound (\ref{eq:highprob}), we have with probability at least $1 - \delta$, 
+\[
+R[{\theta}_T] \leq R_S[{\theta}_T] + \frac{\alpha T L^2}{n} \left( 1 + \sqrt{2n\log(1/\delta)} \right). 
+\] 
+\section{Stability-Inducing Operations} \label{inducing}
+In this section we show that several popular heuristic operations performed in practice do increase the stability of stochastic gradient method.
+
+\subsection{Weight Decay}
+Given an objective function $f$, a learning rate $\alpha$ and a weight decay rate $\mu$, the gradient update with weight decay is defined to be 
+\[
+  G_{f, \mu, \alpha}(w) = (1 - \alpha \mu) w - \alpha \nabla f(w).
+\] Notice this is equivalent to a gradient step with step size $\alpha$ on the regularized objective
+\[
+g(w) = f(w) + \frac{\mu}{2} \norm{w}^2.  
+\]
+The effect of weight decay on gradient descent is shown in the following lemma: 
+\begin{lemma}[Lemma 4.2 \cite{trainfaster}]
+ Assume $f$ has $\beta$-Lipschitz gradients, then $G_{f, \mu, \alpha}$ is $(1+\alpha(\beta-\mu))$-expansive. 
+\end{lemma}
+\begin{proof}
+   Denote $G = G_{f, \mu, \alpha}$, then by triangular inequality and Lipschitz condition, we have
+   \[
+   \begin{aligned}\|G(v)-G(w)\| & \leq(1-\alpha \mu)\|v-w\|+\alpha\|\nabla f(w)-\nabla f(v)\| \\ & \leq(1-\alpha \mu)\|v-w\|+\alpha \beta\|w-v\| \\ &=(1-\alpha \mu+\alpha \beta)\|v-w\| \end{aligned}
+   \]
+\end{proof}
+In other words, using weight decay improves the smoothness of the function and replaces any dependence on $\beta$ with $\beta - \mu$. In particular, once $\mu > \beta$, the update becomes contractive. 
+
+\subsection{Gradient Clipping}
+When training deep neural networks it is a common practice to restrict the magnitude of the gradient, typically through truncation, scaling, or dropping of examples that cause an exceptionally large value of the gradient norm. This leads to a bound on the Lipschitz parameter $L$ of the loss.
+
+\subsection{Dropout}
+Dropout is a popular heuristic often used for preventing overfitting. Practically, applying dropout is equivalent to placing a mask on the gradient that sends a fraction of the gradient to zero, i.e., replace $\nabla \ell(\theta, z)$ with $D \nabla \ell(\theta, z)$. 
+\begin{defn}
+  We say a randomized map $D: \Theta \to \Theta$ is a dropout operator with dropout rate $s$ if for all $v \in \Theta$, we have $\E\norm{Dv} = s\norm{v}$. For a differentiable function $f: \Theta \to \Theta$, we let 
+  \[
+     DG_{f, \alpha} \coloneqq v - \alpha D(\nabla f(v))
+  \] denote the dropout gradient update.
+\end{defn} 
+Dropout operators improve the effective Lipschitz constant of the objective function. 
+\begin{lemma}
+   Assume $f$ is $L$-Lipschitz. Then the dropout update $DG_{f, \alpha}$ with rate $s$ is $s\alpha L$-bounded.
+\end{lemma}
+\begin{proof}
+   Essentially by definition:
+   \[
+   \E\norm{DG_{f, \alpha}(v) - v} = \alpha \E\norm{D\nabla f(v)} = \alpha s \E \norm{\nabla f(v)}  \leq \alpha sL.
+   \]
+\end{proof}
+
+\subsection{Projections and Proximal Steps}
+The proximal update rule is defined by 
+\begin{defn}[(Proximal Update) \cite{trainfaster}]
+  For a nonnegative step size $\alpha \geq 0$ and a function $f: \Theta \to \R$, we define the proximal update rule $P_{f, \alpha}$ as 
+  \[
+  P_{f, \alpha}(\theta)  = \arg\min_v \frac{1}{2} \norm{\theta - v}^2 + \alpha f(v)
+  \]
+\end{defn}
+
+The following lemma shows why proximal steps could improve stability:
+\begin{lemma} \label{proximal}
+   If $f$ is convex, the proximal update is $1$-expansive.
+\end{lemma}
+\begin{proof}
+  Define 
+  \[
+  P_\alpha(w) \coloneqq \arg\min_v \frac{1}{2\alpha} \norm{w-v} + f(v),   
+  \] and define the map $Q_\alpha(w) \coloneqq w - P_\alpha(w)$. Then by the optimality conditions we know 
+  \[
+   \alpha^{-1} Q_\alpha(w) \in \partial f(P_\alpha(w)). 
+  \] 
+  Then by convexity of $f$ we have 
+    \[
+      \innprod{P_\alpha(v) - P_\alpha(w)}{Q_\alpha(v) - Q_\alpha(w)},  
+   \] so we have 
+  \begin{align*}
+  \norm{v-w}^2 &= \norm{P_\alpha(v) - P_\alpha(w) + Q_\alpha(v) - Q_\alpha(w)}^2 \\ 
+  &= \norm{P_\alpha(v) - P_\alpha(w)} + 2 \innprod{P_\alpha(v) - P_\alpha(w)}{Q_\alpha(v) - Q_\alpha(w)} + \norm{Q_\alpha(v) - Q_\alpha(w)}^2 \\
+  &\geq \norm{P_\alpha(v) - P_\alpha(w)}.
+  \end{align*}
+\end{proof}
+Notice that for a convex set $\Theta$, the indicator function $\mathbb{I}_{\Theta}$ is convex, and hence the Euclidean projection onto $\Theta$ is $1$-expansive.
+In many cases, proximal operators are actually contractive. A notable case is when $f(\cdot)$ is the Euclidean norm, in which case the update rule is $\eta$-expansive with $\eta = (1+\alpha)^{-1}$, so choosing an appropriate proximal update could induce better stability.
+
+\subsection{Model Averaging} 
+The idea of model averaging is to output the weighted average of iterates $w_t$ obtained at each time step, as introduced in \ref{eq:weighted}. The following theorem shows that model averaging improves the bound in Theorem \ref{sgdstable} by a constant factor  
+\begin{theorem} \label{averaging}
+   Assume $f: \Theta \to [0, 1]$ is convex, $L$-Lipschitz and has $\beta$-Lipschitz gradient, then if we run SGD with step size $\alpha_T \leq \alpha\ leq 2/\beta$ for $T$ steps, the average of the first $T$ iterates of SGD has uniform stability of $\epsilon_{\text{stab}} \leq \frac{\alpha (T+1)L^2}{n}$.
+\end{theorem}
+
+\begin{proof}
+ Let $\bar{w}_T = \frac{1}{T} \sum_{t=1}^T w_t$, then since 
+  \[
+  w_t = \sum_{k = 1}^{t} \alpha \nabla f(w_k, z_k),    
+  \]  we have 
+  \[
+  \bar{w}_T = \alpha \sum_{t=1}^T \sum_{k=1}^t \nabla f(w_k, z_k) = \alpha \sum_{k=1}^T \sum_{t=k}^T \nabla f(w_k, z_k) = \alpha \sum_{k=1}^T \frac{T-k+1}{T} \nabla f(w_k, z_k).
+  \] Follow a similar argument as in theorem \ref{sgdstable}, we have 
+  \[
+  \E[\delta_t] \leq (1-1/n) \E [\delta_{t-1}] + \frac{1}{n} \left( \E[\delta_{t-1}] + 2\alpha L \frac{T-t+1}{T} \right),  
+  \] summing up both sides and using the Lipschitz continuity of $f$ as in theorem \ref{sgdstable}, we have the desired bound. 
+\end{proof}
+
+% \bibliographystyle{abbrvnat}
+\bibliography{template}
+
+%
+ \end{document}
+
+
+
+
+
+

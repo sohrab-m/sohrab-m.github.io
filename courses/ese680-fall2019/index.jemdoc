@@ -1,0 +1,107 @@
+# jemdoc: menu{MENU}{index.html}
+# jemdoc: menu{MENU}{../../}
+= ESE 680, Fall 2019 -- Learning and Control
+
+*Instructor:* Nikolai Matni, Assistant Professor, ESE Department
+
+*E-mail*: nmatni@seas.upenn.edu (please start subject line with ESE680)
+
+*Lectures:* Tu/Th 3-4.30pm, Moore 212
+
+*Office hours*: by appointment, Levine 374
+
+*Syllabus*: [./Syllabus.pdf ESE680-004]
+
+== Overview
+This advanced topics course will provide students with an introduction to current areas of research at the intersection of machine learning and control.  We will investigate machine learning and data-driven algorithms that interact with the physical world.  Topics of study will include learning models of dynamical systems, using these models to robustly meet performance objectives, optimally refining models to improve performance, and verifying the safety of machine learning enabled control systems.  The course will be a combination of lectures and student led presentations of papers drawn from a list of both classical and modern texts.  Students will be evaluated based on their paper presentation, as well as a class project.  Suitable choices for projects include implementing, evaluating, and comparing tools introduced in class, extending existing theoretical results, and applying tools to a domain specific problem of their choosing.
+
+== Tentative list of topics (subject to change based on student interest)
+- *System identification*
+    -- asymptotic vs. finite-time guarantees
+    -- full state vs. partially observed systems
+    -- system identification for control
+    
+- *Learning theory*
+    -- risk and empirical risk
+    -- concentration inequalities
+    -- uniform convergence
+    -- stability and generalization
+
+- *Control of uncertain systems*
+    -- modeling assumptions, system norms, robust stability
+    -- optimal and robust control
+    -- model validation and robust control
+
+- *Model based control of learned systems*
+    -- metrics for learning and control problems: regret, PAC, and beyond
+    -- end-to-end sample complexity guarantees
+    -- comparison of online approaches
+
+- *Model free methods*
+    -- approximate dynamic programming and reinforcement learning
+    -- sample complexity guarantees for continuous control
+    -- complexity gaps between model free and model based methods
+    
+- *Safe learning and control*
+    -- robust invariant sets and model predictive control
+    -- Lyapunov functions and regions of attractions
+    -- Control Lyapunov and control barrier functions
+
+== Templates
+    - Lecture notes [template.tex template].
+
+== About the Course
+=== Prerequesites
+
+Linear Systems (ESE 500), and one of Machine Learning (CIS 520) or Modern Convex Optimization (ESE 605), or permission from the instructor.  The course will assume maturity in topics like linear algebra, optimization, stochastic processes, and calculus.
+
+=== Class structure
+We will try to adhere to the following structure: the course is roughly divided into 6 units, one for each of the topics listed above.  For each unit, the instructor will teach 2-3 lectures, followed by 1-2 student led lectures consisting of a paper presentation and group discussion.  One or two readings will be assigned for each lecture.  Students are expected to read the papers and come to class prepared to discuss them in detail.
+
+=== Grading
+Grading will be based on course participation, paper presentation/scribing, and the course project.  
+
+=== Paper Presentations and Scribing
+Depending on enrollment numbers, each student will either be assigned a paper to present or asked to scribe a lecture.
+
+*Presentations* should address the following questions:
+
+- Problem statement: what problem is the paper solving, and why is it meaningful?
+
+- Prior work: how does this paper fit into the current research landscape.
+
+- Key idea/Main result: what is the main result of the paper? What is the main takeaway from the paper?
+
+- Key technical tools: what are the main technical contributions of the paper?  Be prepared to present and explain these in detail.
+
+- Points of confusion: are there technical or conceptual arguments that are unclear or incomplete?  Bring these up so that we can discuss and try to work through them in class.
+
+- Shortcomings/areas for improvement: what are some of the flaws of the paper?  What are possible directions for future work to address these?
+
+*Scribes* will be expected to both summarize the assigned reading and the lecture itself, and should address all of the same points a presentation would.  It is expected that you will put several hours into these notes, as they should go beyond just summarizing what was presented in class.
+
+=== Project
+Projects may be done individually or in groups of two.  Students are encouraged (but not required) to propose a topic that connects class material to aspects of their research.  Students are expected to produce the following deliverables:
+- Proposal (1-2 pages): *due Fri Oct 4, 2019*
+- Midterm update (2-3 pages)
+- Final presentation
+- Final report (6-8 pages)
+
+The final report and presentation are meant to mimic a conference setting.  The report is expected to be a self-contained document with introduction, literature review, problem formulation, main results (and experiments if applicable), and discussion/conlcusion sections.
+
+~~~
+{}{raw}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49484039-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-49484039-2');
+</script>
+
+~~~
+
+
+

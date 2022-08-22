@@ -1,68 +1,74 @@
 # jemdoc: menu{MENU}{index.html}
-# jemdoc: addcss{slideshow.css}
-~~~
-{}{table}{TABLE_HOME_HEAD}
-{{<img class="float" style="width: 100px; margin-left:-15px; margin-top: 13px;" src="images/logo.jpg"></img>}}
-{{<h1 style="padding-bottom: 22px; margin-bottom: 0.3em; margin-top: 5px;">Website Name <span style = "display: block; padding-top: 10px; color: black; font-weight: normal;">More information but within the line-size limit.</span></h1>}}
-~~~
 
-Some information about this website and the purpose of it.
+~~~
+{}{img_left}{Figs/nik.jpg}{Nikolai Matni}{121px}{176px}{}  
+*Nikolai Matni* \n
+[nmatni@seas.upenn.edu \[e-mail\]\ [https://github.com/unstable-zeros \[github\]] [https://twitter.com/NikolaiMatni \[twitter\]] [https://www.linkedin.com/in/nikolai-matni-a3204940/ \[linkedin\]] [https://scholar.google.com/citations?user=ZDPCh_EAAAAJ&hl=en \[scholar\]]  \n
+Assistant Professor, [https://www.ese.upenn.edu/ Electrical and Systems Engineering] 
+\n
+Secondary appointment in [https://www.cis.upenn.edu/ Computer and Information Science]\n 
+Member of [https://www.amcs.upenn.edu/ Applied Mathematics and Computational Sciences] graduate group \n
+Member of the [https://www.grasp.upenn.edu GRASP] Lab and [https://precise.seas.upenn.edu PRECISE] Center \n
+[https://www.upenn.edu University of Pennsylvania]
+~~~ 
+
+== Research Interests
+Machine and Reinforcement Learning, Robust and Distributed Optimal Control, Convex Optimization, Cyber-Physical Systems, Software Defined Networking
+
+
+== Research Overview
+Machine learning techniques - bolstered by successes in video games, sophisticated robotic simulations, and Go – are now being applied to plan and
+control the behavior of autonomous systems interacting with physical environments. Such systems, which include self-driving vehicles, distributed sensor
+networks, and agile robots, must interact with complex environments that
+are ever changing and difficult to model, strongly motivating the use of data-driven decision making and control. However, if machine learning techniques
+are to be applied in these new settings, it is critical that they be accompanied
+by guarantees of reliability, robustness, and safety, as failures could be catastrophic. To address these challenges, my research is focused on developing learning-based control strategies for the design of safe and robust autonomous networked systems. Please see my publications page for current research projects, and the talks below for an accessible introduction (aimed at a general engineering audience) to some of the ideas behind my work.  The first talk (given as part of the Everhart Lecture Series at Caltech) focusses on more control theoretic ideas, whereas the second (given as part of the SILO seminar series at UW-Madison) presents a high-level overview of my approach to integrating machine learning into safety critical control loops.
 
 ~~~
 {}{raw}
-<div class="slideshow-container" style="text-align:center">
-    <div class="mySlides fade">
-        <div class="numbertext">1 / 3</div>
-        <img src="images/home_photo1.jpg" style="width:70%">
-        <div class="text">Home photo 1</div>
-    </div>
+<center>
+<iframe width="420" height="236.25" src="https://www.youtube.com/embed/lS-Y5iVNQ-U" frameborder="0" allowfullscreen></iframe>
 
-    <div class="mySlides fade">
-        <div class="numbertext">2 / 3</div>
-        <img src="images/home_photo2.jpg" style="width:70%">
-        <div class="text">Home photo 2</div>
-    </div>
+<iframe src="https://player.vimeo.com/video/319035651?color=b80013&title=0&byline=0&portrait=0" width="420" height="236" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></center>
 
-    <div class="mySlides fade">
-        <div class="numbertext">3 / 3</div>
-        <img src="images/home_photo3.jpg" style="width:70%">
-        <div class="text">Home photo 3</div>
-    </div>
-</div>
-
-<br />
-
-<div style="text-align:center">
-    <span class="dot"></span> 
-    <span class="dot"></span> 
-    <span class="dot"></span> 
-</div>
-
-<script>
-    var slideIndex = 0;
-    showSlides();
-    function showSlides() {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1}    
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex-1].style.display = "block";  
-        dots[slideIndex-1].className += " active";
-        setTimeout(showSlides, 3500); // Change image every 2 seconds
-    }
-</script>
 ~~~
-
 
 == News
+
+
 ~~~
 {}{raw}
-<iframe src="rss/news.html" style="border-width:0; border-style:none;" height="800px" width="100%" scrolling="yes"></iframe>
+
+<a  height = "300" width="600" class="twitter-timeline" href="https://twitter.com/NikolaiMatni?ref_src=twsrc%5Etfw">Tweets by NikolaiMatni</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 ~~~
+    - Paper on Evaluating Robust, Perception Based Controllers with Quadrotors accepted to IROS 2020! Stay tuned for the preprint!
+    - Papers on [https://arxiv.org/abs/1907.03680 Robust Perception Based Control] and the [https://arxiv.org/abs/1912.12309 Sample Complexity of Kalman Filtering for Unknown System] accepted to [https://sites.google.com/berkeley.edu/l4dc/home?authuser=0 L4DC 2020]!  Our KF paper will be one of 14 oral spotlight presentations!
+    - *Dec 11-13:* I will be giving a [cdc2019tutorial.html tutorial] on self-tuning control and reinforcement learning at CDC 2019 in Nice, France!
+    - *Nov 21:* I will be discussing recent developments, challenges, and new opportunities in data-driven control and optimization of CPS at the [https://cps-vo.org/group/cps-pimtg19/mini-workshops Mini-Workshop on Learning for Control] at the 2019 NSF CPS PI Meeting. 
+    - I am serving on the program comittees for [https://berkeleylearnverify.github.io/HSCC_2020/ HSCC 2020] and [https://sites.google.com/berkeley.edu/l4dc/home?authuser=0 L4DC 2020].
+    - *Nov 4:* Presenting our work on safety and robusntess guarantees with learning in the loop as part of the [http://people.ee.ethz.ch/~floriand/docs/Teaching/ControlSeminarSeries/CSS_2019_Fall.pdf ETHz Control Seminar Series], at ETH Zurich. 
+    - *Oct 16:* Presenting our work on safety and robustness guaranteees with learning in the loop at the [https://lcsr.jhu.edu/ LCSR] at John Hopkins University. 
+    - *Oct 14-15:* Attending the NSF-sponsored [https://wordpress.lehigh.edu/indisc/tripods-x-lehighu/workshop-two/ Robot Learning Workshop] at Lehigh University to present our work on [https://arxiv.org/abs/1907.03680 robust guarantees for perception based control]. ([https://lehighonline.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=2e2b18e4-749d-4b4e-8260-aae70125df50 Presentation Video])
+    - *Sep 24-26:* Attending Allerton to present our work on efficient learning of distributed controllers.
+    - New papers on [https://arxiv.org/abs/1909.10074 distributed MPC using SLS], [https://arxiv.org/abs/1909.10092 robust performance guarantees for SLS], and [https://arxiv.org/abs/1909.09895 efficient learning of distributed controllers].
+    - *May 30-31:* Attending the inaugural [https://l4dc.mit.edu/ Learning for Dynamics and Control] at MIT
+    - Our paper *A System Level Approach to Controller Synthesis* is accepted for publication in IEEE TAC
+    - *Dec 13-18:* IEEE CDC 2018, Miami, FL 
+    - *Dec 2-8:* NeurIPS, Montreal, Canada
+
+
+~~~
+{}{raw}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49484039-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-49484039-2');
+</script>
+
+~~~
+

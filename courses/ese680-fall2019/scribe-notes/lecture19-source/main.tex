@@ -1,0 +1,431 @@
+
+\documentclass{article}[12pt]
+\usepackage{fullpage,graphicx, setspace, latexsym, cite,amsmath,amssymb,color,subfigure}
+\usepackage[ruled,vlined]{algorithm2e}
+% \usepackage{algorithm}% http://ctan.org/pkg/algorithm
+% \usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
+%\usepackage{epstopdf}
+%\DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg,.mps} 
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage{amsthm}
+
+\bibliographystyle{unsrt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{defn}{Definition}
+\newtheorem{ex}{Example}
+\usepackage{float}
+
+\def\R{\mathbb{R}}
+\def\Eps{\mathcal{E}}
+\def\E{\mathbb{E}}
+\def\V{\mathbb{V}}
+\def\F{\mathcal{F}}
+\def\G{\mathcal{G}}
+\def\H{\mathcal{H}}
+\def\S{\mathcal{S}}
+\def\P{\mathbb{P}}
+\def\1{\mathbf{1}}
+\def\n{\nappa}
+\def\h{\mathbf{w}}
+\def\v{\mathbf{v}}
+\def\x{\mathbf{x}}
+\def\X{\mathcal{X}}
+\def\Y{\mathcal{Y}}
+\def\eps{\epsilon}
+\def\y{\mathbf{y}}
+\def\e{\mathbf{e}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\newcommand{\twonorm}[1]{\left|\left|#1\right|\right|_2}
+
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   % \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \setlength{\headsep}{10mm}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf ESE 680-004: Learning and Control
+   \hfill Fall 2019} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Lecture #1: #2  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Lecturer: #3 \hfill Scribe: #4} }
+      \vspace{2mm}}
+   }
+   \end{center}
+   \markboth{Lecture #1: #2}{Lecture #1: #2}
+
+   \noindent{\bf Disclaimer}: {\it These notes have not been subjected to the
+   usual scrutiny reserved for formal publications. }
+   \vspace*{4mm}
+}
+
+%notation
+
+\def \E{\mathbb E}
+\def \P{\mathbb P}
+\def \R{\mathbb R}
+\def \A{\cal A}
+
+\begin{document}
+
+\lecture{19}{Q-learning for LQR}{Nikolai Matni}{Raphael Van Hoffelen}
+
+
+%redo
+In the previous lectures, we have talked about the model-based control approach of learned systems. But what learning methods and algorithms can be used in a model-free control approach? In this lecture, we will see how we can use reinforcement learning techniques such as Q-Learning , TD-Learning and Policy Iteration for LQR problems.
+
+\section{Stochastic Dynamic Programming}
+
+Let's consider the following dynamical system:
+\begin{displaymath}
+x_{t+1}=f_{t}\left(x_{t}, u_{t}, w_{t}\right), t=0,1, \ldots, N-1
+\end{displaymath}
+We denote the cost per stage by $c_t(x_t,u_t)$ and assume that $x_t\in\X_t$ and $u_t \in \mathcal U_t$. Our task in this problem, is to optimize over all polices  $\pi =\{\mu_0,\dots,\mu_{N-1}\}$ such that $u_t = \mu_k(x_t)\in \mathcal U_t$. \newline 
+\newline
+We start by defining the expected cost incurred by a policy $\pi$ starting at state $x_0$ such that 
+\[
+J_\pi(x_0)=\E\left\{c_N(x_N)+\sum_{t=0}^{N-1}c_t(x_t,\mu_t(x_t))\right\},
+\]
+where the expectation cost is taken over $\{w_t,x_t,\mu_t\}$. We can now define a optimal policy $\pi_\star$ that minimizes the cost function $J_{\pi_\star}(x_0)$ for all $\pi\in\Pi$ at state $x_0$. In other words, $\pi_\star$ can be define such that $J_{\pi_\star}(x_0)=\min_{\pi\in\Pi}J_\pi(x_0)$. We will now denote this cost with $J^\star$ and use $J^\star(x_0)$ as the optimal cost-to-go function that uses the optimal policy $\pi_\star$ at state $x_0$.\newline
+
+Now that our system is set up, we will lay out the steps of the dynamic programming approach to solve stochastic finite horizon problems and find the optimal policy $\pi_\star$.\newline
+\begin{itemize}
+    \item The first step consists to initialize our optimal cost function from the "bottom up" such that $J^\star_N(x_N)=c_N(x_N)$ where $c_N(x_N)$ is the cost of our system at the final state $x_N$.
+    \item We then iterate through all states in reverse order such that $t=N-1,N-2,\dots,1,0$. at each new state $x_t$, we can calculate the optimal cost function $J_t^\star(x_t)$ by minimizing the expected sum of the cost current state $c_t(x_t,u_t)$ with the optimal cost $J^\star_{t+1}(f_t(x_t,u_t,w_t)$ at time $t+1$ for all $u_t \in U_t$. In other words:
+    \begin{equation} \label{eq:1}
+        \text{for } t=N-1,N-2,\dots,1,0. \text{ let } J_t^\star(x_t)=\min_{u_t\in\mathcal U_t}\E\left\{c_t(x_t,u_t)+J^\star_{t+1}(f_t(x_t,u_t,w_t))\right\}
+    \end{equation}
+    \item Finally if all optimal $u_t^\star=\mu^\star_t(x_t)$ minimizes the right-hand-side of equation \eqref{eq:1} for each state $x_t$ and time $t$, then $\pi_\star=\{\mu_0^\star,\dots,\mu_{N-1}^\star\}$ is optimal and $J_0^\star(x_0)$ is the optimal cost to go $J^\star(x_0)$.
+\end{itemize}
+
+\newpage
+\section{Approximate Dynamic Programming}
+There are 2 main implementation of the dynamic programming method described above. \\
+The first implementation consists in computing the  optimal cost-to-go functions $J_k^\star$ and policies $\mu_k^\star$ ahead of time and store them in look-up-tables. This puts all the compute power in advance and allows for a fast inexpensive run time. \\
+The second implementation describes a method to use in "real-time". It consists in computing the dynamic programming recursion online using a 1-step look-ahead. By doing this you only need to compute the cost-to-go $J_t^\star(x_t)$ for the N states seen during execution.\\
+\\
+Unfortunately, most real world applications requires the computation to be done in "real-time" but the second implementation discussed ends up being too computationally expensive. This is why approximation techniques are usually used to trade off optimally for speed. \\
+One common approach consists of conducting approximations in value space. This means that at any state $x_t$ encountered at time $t$ compute and apply the following equation:
+\[
+\tilde\mu(x_t) \in \argmin_{u_t \in \mathcal U_t} \E\left\{c_t(x_t,u_t)+\tilde{J}_{t+1}(f_t(x_t,u_t,w_t))\right\}
+\]
+
+\section{Q-Functions or Q-Factors}
+
+Dynamic programming can also be defined using Q-factors (or Q-Value). A Q-Factor is define by a Q-Function that takes in a state/action pair and calculates the expected sum of the current state/action cost and optimal cost-to-go function $J_{t+1}^\star$ at time $t+1$. Each state has a Q-factor for each action that can be taken at that state. We can therefore define the optimal Q-Factor with the following equation:
+\begin{equation}\label{eq:2}
+    Q_t^\star(x_t,u_t) = \E\left\{c_t(x_t,u_t) + J_{t+1}^\star(f_t(x_t,u_t,w_t))\right\}
+\end{equation}
+Looking back at equation \eqref{eq:1}, we can see that equation \eqref{eq:2} can substituted be in. We now have $J_{t}^\star(x_t)$ defined by  $Q_t^\star(x_t,u_t)$. This gives us the following set of equations:
+
+\begin{equation}\label{eq:3}
+   J_t^\star(x_t)=\min_{u_t\in\mathcal U_t} Q_t^\star(x_t,u_t)
+\end{equation}
+with optimal policy $\mu_k^\star$ defined as:
+\begin{equation}\label{eq:4}
+    \mu_k^\star(x_t)=\argmin_{u_t \in U_t} Q_t^\star(x_t,u_t)
+\end{equation}
+We can now use the Q-Factor dynamic programming algorithm to find $ Q_t^\star(x_t,u_t)$.
+\begin{itemize}
+    \item First initialize $Q_N^\star(x_N,u_N) = c_N(x_N)$ (Cost of the last state at $t=N$)
+    \item then solve the backwards recursion define by this equation:
+    \begin{equation}\label{eq:5}
+        Q_{t}^{\star}\left(x_{t}, u_{t}\right)=\mathbb{E}\left\{c_{t}\left(x_{t}, u_{t}\right)+\min _{u_{t+} \leq \mathcal{U}_{t+1}} Q_{t+1}^{\star}\left(f_{t}\left(x_{t}, u_{t}, w_{t}\right), u_{t+1}\right)\right\}
+    \end{equation}
+\end{itemize}
+
+\newpage
+\section{Discounted Problems and TD-Learning} \label{Discounted Problems and TD-Learning}
+
+The problem with the methods defined earlier is that they do not work for infinite horizon problems. In order to solve this issue with minimal technical overhead we can introduce a discounted cost $\gamma \in [0,1]$ in our algorithms. this allows use to disregard state cost as $t$ moves towards $\infty$. This is shown in the following equation:
+\begin{equation}\label{eq:6}
+    J_{\pi}(x_0) = \E\left\{\sum_{t=0}^\infty \gamma^t c(x_t,\mu(x_t))\right\}
+\end{equation}
+Where the cost function $c(c_t,\mu(x_t))$ converges to $0$ exponentially with respect to $\gamma^t$ as $t$ moves towards $\infty$.\\
+
+Now that we have a way to define infinite horizon problems for dynamic programming, we can use the Temporal Difference (TD) learning to approximate the cost-to-go function from data. We will define $\hat J_\pi(x_t)$ as the current estimate of the cost-to-go function at state $x_t$. TD-learning proposes the following update with $\alpha>0$:
+\begin{equation}\label{eq:7}
+    \hat J_\pi(x_t) \leftarrow (1-\alpha)\hat J_\pi(x_t) + \alpha\left[c(x_t,\mu(x_t))+\gamma \hat J_\pi(x_{t+1})\right]
+\end{equation}
+
+\section{Q-Learning: TD-Learning for Q-Factors}
+
+We now know how TD-Learning update works for the cost-to-go function, and we know how to define $J_{t}^\star(x_t)$ with respect to $Q_t^\star(x_t,u_t)$. The next step will be to introduce a discount cost in the equation \eqref{eq:2} in order for us to use TD-Learning with Q-Factors.
+\\ 
+
+Similarly to how we did for equation \eqref{eq:6}, we can introduce a discounted cost  $\gamma \in [0,1]$ in our equation \eqref{eq:2}. By doing so we are left with the following equation: 
+\begin{equation}\label{eq:8}
+    Q^\star(x,u) = \E\left\{c(x,u)+ \gamma\min_{u'\in\mathcal U} Q^\star(f(x,u,w),u')\right\}
+\end{equation}
+We can now finally use the TD-Learning update with $\alpha>0$ to estimate the current Q-function:
+\begin{equation}\label{eq:9}
+    \hat{Q}(x_t,u_t) \leftarrow (1-\alpha) \hat{Q}(x_t,u_t) + \alpha\left[c(x_t,u_t)+\gamma\min_{u'\in \mathcal U}\hat{Q}(x_{t+1},u')\right]
+\end{equation}
+
+TD-Learning on cost-to-go functions and Q-functions are shown to converge in the tabular discounted settings \cite{Sutton} \cite{Brad94}. But convergence and optimality proofs using the function approximations $\hat J_\pi(x_t)$ and $\hat{Q}(x_t,u_t)$ harder to prove \cite{QConvergence}.
+
+\section{Adaptive LQR using Policy Iteration}
+The first convergence results for DP-based RL algorithms for continuous control problems was first proved in the paper entitled "Adaptive linear quadratic control using policy iteration" \cite{Brad94}. The paper does so by using recursive least-square for Q-learning combined with policy iteration and strongly exploits the prior knowledge that Q-functions are quadratic \cite{Sutton}. The results of the paper shows asymptotic convergence for modern (non-asymptotic) treatment \cite{Brad94}.
+
+\subsection{Problem Setup}
+Lets consider some system dynamics described by
+\[
+x_{t+1} = Ax_t + Bu_t = f(x_t,u_t), \ u_t = Kx_t, 
+\]
+$A+BK$ is stable with per-stage cost $c(x_t,u_t) = x_t^\top S x_t + u_t^\top R u_t$. \\
+\newpage
+
+Using section \ref{Discounted Problems and TD-Learning} we can define the discounted cost-to-go function for control policy $K$ beginning at time $t$ from state $x_t$ to be $V_K(x_t) := \sum_{i=0}^\infty \gamma^i c(x_{t+i},u_{t+i})$ for $\gamma \in [0,1]$. From control theory, we know that $V_K(x_t) = x_t^\top P_K x_t$ for $P_K \succ 0.$.
+We now denote $K^\star$ as the optimal controller and $P^\star$ as the optimal cost matrix. By substituting $V_K(x_t)$ as our cost-to-go function in equation\eqref{eq:8} we now have a new set of equations to define our Q-Function in relation to our system dynamics set up:
+\begin{equation}\label{eq:10}
+    Q_{K}(x, u)=c(x, u)+\gamma V_{K}(f(x, u))
+\end{equation}
+\begin{equation}\label{eq:11}
+    Q_{K}\left(x_{t}, u_{t}\right)=c\left(x_{t}, u_{t}\right)+\gamma Q_{K}\left(x_{t+1}, K x_{t+1}\right)
+\end{equation}
+
+\subsection{Exploiting Quadratic Structure}
+Q-Functions have a nice quadratic structure \cite{Brad94}. This enable us to simplify our problem by rewriting the the Q-Function as 
+\begin{equation}\label{eq:12}
+    Q_{K}(x, u)=[x ; u]^{\top}\left[\begin{array}{cc}{Q_{K}(1,1)} & {Q_{K}(1,2)} \\ {Q_{K}(1,2)^{\top}} & {Q_{K}(2,2)}\end{array}\right][x ; u], 
+    \begin{array}{l}{Q_{K}(1,1)=S+\gamma A^{\top} P_{K} A} \\ {Q_{K}(1,2)=\gamma A^{\top} P_{K} B} \\ {Q_{K}(2,2)=R+\gamma B^{\top} P_{K} B}\end{array}
+\end{equation}
+
+It is easier now to take a standard policy iteration approach as defined in \cite{Sutton} to find an improved policy. To do so we must first fix a policy $K_k$ and cost-to-go function $J_k$ where $k$ denotes the Dynamic Programming iterations. We then can find the improved policy of our system via the following recursive algorithm:
+\begin{equation}\label{eq:13}
+    K_{k+1}x = \argmin_u\left[c(x,u)+\gamma J_K(f(x,u))\right] = \argmin_u Q_K(x,u)
+\end{equation}
+This leads us to set $\nabla_u Q_K(x,u)=0$ and solve for $u$ which yields the following equation:
+\begin{equation}\label{eq:14}
+    u = -\gamma (R+\gamma B^\top P_{K_k} B)^{-1}B^\top P_{K_k}Ax =: K_{k+1}x
+\end{equation}
+Finally, via pattern matching we can conclude that:
+
+\begin{equation}\label{eq:15}
+    K_{k+1}=-Q_{K}(2,2)^{-1} Q_{K}(1,2)^{\top}
+\end{equation}
+
+We can make few observations from the equations defined above. We can see that if we assume that we begin at a stabilizing policy, then $K_{k+1}$ must also be stabilizing as the cost can only decrease by running policy iteration. The leads to a new Q-function that can then be learned while repeating the process over. This shows us that proving convergence is reduced to analyzing the direct estimation of Q-functions and the convergence of adaptive policy iteration for LQR. Finally we also see that the discount factor changes the traditional meaning of stability in control theory to finite cost. More work is therefore needed to ensure actual stability of our dynamic system.
+
+\subsection{Direct Estimation of the Q-Function}
+As explained in section 6.2, Q-Factors are quadratic in $[x;u]$. This means that they can be made linear in the right basis and therefore be reduced to a least-squares problem. \\
+
+Let $\bar{x} = [x_1^2,\dots,x_1x_n,x_2^2,\dots,x_2x_n,\dots,x_n^2]^\top$ and define $\Theta(P)$ such that $x^\top P x = \bar{x} \Theta(P)$. Note that $\Theta$ is invertible when restricted to symmetric matrices. We can now rewrite equation \eqref{eq:12} as:
+\begin{equation}\label{eq:16}
+    Q_K(x,u)=[x;u]^\top Q_K [x;u] = \overline{[x;u]}^\top \Theta(Q_K)
+\end{equation}
+Consequently we can plug in this equation in equation \eqref{eq:11} in order to get:
+\begin{equation}\label{eq:17}
+    \begin{array}{rl}
+    c(x_t,u_t) &= Q_K(x_t,u_t)-\gamma Q_K(x_{t+1},Kx_{t+1}) \\
+    & = \left(\overline{[x_t;u_t]}^\top-\gamma\overline{[x_{t+1};Kx_{t+1}]}^\top\right) \Theta(Q_K)\\
+    & =: \phi_t^\top \theta_K
+    \end{array}
+\end{equation}
+
+Now we can use the recursive least-square method on our dynamic system with both $i$ and $t$ denote time and $k$ denoting the Dynamic Programming step by substituting the equations we defined above. This gives us the following values.
+\begin{itemize}
+\item error update: $e_k(i) = c(x_t,u_t) - \phi_t^\top \hat{\theta}_k(i-1)$;
+\item estimate update: $\hat{\theta}_k(i) = \hat{\theta}_k(i-1) + \frac{\Sigma_k(i-1)\phi_t e_k(i)}{1+\phi_t^\top \Sigma_k(i-1)\phi_t}$;
+\item covariance update: $\Sigma_k(i) = \Sigma_k(i-1) - \frac{\Sigma_k(i-1)\theta_t\theta_t^\top\Sigma_k(i-1)}{1+\phi_t^\top\Sigma_k(i-1)\phi_t}$;
+\item covariance initialization: $\Sigma_k(0) = \Sigma_0 = \beta I \gg I$;
+\end{itemize}
+
+This recursive least-square is guarantee to converge asymptotically to true parameters if $\theta_k = Q_{K_k}$ remains fixed, and $\phi_t$ satisfy the persistence of excitation condition:
+\begin{displaymath}
+\epsilon_0 I \leq \frac{1}{N} \sum_{i=1}^N \phi_{t-i}\phi_{t-i}^\top \leq \bar\epsilon_0 I \text{ for all } t \geq N_0 \text{ and for all } N \geq N_0, \text{ for some } N_0>0.
+\end{displaymath}
+
+\subsection{Adaptive Policy Iteration Algorithm for LQR}
+Finally with everything defined in section 6, we can now propose an Adaptive Policy Iteration algorithm for LQR problems.
+
+Given a initial state $x_0$ and stabilizing controller $K_0$ and using $k$ to denote the policy iteration steps, $t$ the total time steps, and $i$ the time steps since the last policy change. We can propose the following algorithm: \\
+\\
+\\
+\begin{algorithm}[H]
+\SetAlgoLined
+ Initialize parameters: $\hat \theta_1(0)$ \;
+ $t \gets 0$\;
+ \For{$k=0$ to $\infty$}{
+    Initialize RLS: $\Sigma_k(0) = \Sigma_0$ \;
+    \For {$i=1$ to $N$}{
+    $u_t = K_k x_t + e_t$, for $e_t$ exploratory noise signal \;
+    Apply $u_t$ and observe $x_{t+1}$ \;
+    Update $\hat \theta_k(i)$ using RLS \;
+    $t \leftarrow t+1$ \;
+    }
+    Find matrix $\hat{Q_{K_k}}$ corresponding $\hat \theta_k(N)$ \;
+    set $K_{k+1} = - \hat{Q}^{-1}_{K_k}(2,2)\hat{Q}^\top_{K_k}(1,2)$ \;
+    $\hat \theta_{k+1}(0) = \hat \theta{k}(N)$ \;
+ }
+ \caption{Adaptive Policy Iteration for LQR}
+\end{algorithm}
+
+\newpage
+\section{Convergence Analysis}
+Now that we have seen an algorithm that we can use for LQR problems, we need to ask ourselves why would it break? The reason the method that we laid out above might break is due to the fact that the Policy improvement step is based on an estimate of $Q$-factor parameterized by $\Theta(Q_{K_k})$. We also have no a priory reason to expect the Policy Iteration based on approximate Q-factors as defined in section 6.4 to converge to an optimal policy $K^\star$. We therefore need to prove this convergence.
+
+\begin{theorem}\label{theo:1}
+Suppose $(A,B)$ are controllable, $K_0$ is stabilizing, and $\phi_t$ is persistently excited. Then $\exists N < \infty$ such that the adaptive policy iteration mechanism described previously generates a sequence $\{K_k\}$ of stabilizing controllers satisfying:
+\begin{equation}\label{eq:19}
+\lim_{k\to \infty} \norm{K_k-K_\star}_2=0
+\end{equation}
+for $K_\star$ the optimal LQR controller.
+\end{theorem}
+
+\subsection{Proof: Strategy}
+Lets suppose that we are policy iterate $k$, and define the scalar ``Lyapunov'' like function 
+\begin{equation}
+    s_k = \sigma_k(K_{k-1}) + \norm{\theta_{k-2}-\hat{\theta}_{k-2}}_2
+\end{equation}
+We can propose the following high level idea that if the estimation horizon $N$ is sufficiently long, and the persistence of excitation conditions holds, then $s_{k+1} \leq s_k$.\\ \\
+We will therefore develop recursions for $v_{k}:=\left\|\theta_{k=1}-\hat{\theta}_{k-1}\right\|_{2}$ and $\sigma\left(K_{k-1}\right)$ and then identify conditions on both estimation horizons to ensure that they both decrease. \\
+The key idea of this proof is that if things are well behaved in the past, and that if we have (a nearly) true Q-Factor, our updates are guaranteed to (nearly) improve on performance.
+
+\subsection{Proof: intermediate results}
+Before we start we need two intermediate results.  We let $\sigma(K_k):=tr(P_{K_k})$.
+
+\begin{lemma}
+If $(A,B)$ is controllable, $K_1$ is stabilizing with associated cost matrix $P_1$, and $K_2$ the result of one policy improvement step, i.e., $K_2 = -\gamma(R+\gamma B^\top P_1 B)^{-1}B^\top P_1 A$, then: 
+\[
+\Delta\norm{K_1-K_2}_2^2\leq \sigma(K_1)-\sigma(K_2)\leq \delta\norm{K_1-K_2}_2^2 
+\]
+where
+$0 < \Delta = \sigma_{\min}(R)\leq \delta = tr(R+\gamma B^\top P_1 B)\norm{\sum_{i=0}^\infty \gamma^{i/2}(A+BK_2)^i}^2_2$
+\end{lemma}
+\begin{lemma}
+If $\phi_t$ is persistently excited and $N\geq N_0$, then
+\[
+\norm{\theta_k-\hat{\theta}_k}_2 \leq \epsilon_N\left(\norm{\theta_k - \theta_{k-1}}_2+\norm{\theta_{k-1}-\hat{\theta}_{k-1}}_2\right),
+\]
+where $\epsilon_N = (\epsilon_0 N \sigma_0)^{-1}$ and $\sigma_0 = \sigma_{\min}(\Sigma_0)$.
+\end{lemma}
+
+\newpage
+\subsection{Proof: nearby control laws are stable}
+Lets suppose that we are at policy iteration $k$, and define the scalar ``Lyapunov'' like function:
+\begin{equation}\label{eq:20}
+s_k = \sigma_k(K_{k-1}) + \twonorm{\theta_{k-2}-\hat{\theta}_{k-2}}
+\end{equation}
+We can make the induction assumption that $s_i \leq \bar{s}_0<\infty$ for all $0\leq i \leq k$. From this assumption we can conclude that $K_{k-1}$ is stabilizing as $\sigma(K_{k-1})\leq \bar{s}_0$, and that the parameter estimation error is bounded as $\twonorm{\theta_{k-2}-\hat{\theta}_{k-2}}\leq \bar{s}_0$. \\ \\ 
+Now if the actual Q-function were available, we could compute the next iteration $K^\star_k$, and this controller would be stabilizing, and by the improvement property of policy iteration, would satisfy $\sigma(K^\star_k) \leq \bar{s}_0$. Therefore by continuity of the optimal policy update (Lemma 1), we have:
+\begin{equation}\label{eq:21}
+\forall \delta >0 \, \exists \epsilon_\delta >0
+\text{, s.t.} |\sigma(K)-\sigma(K_k^\star)|\leq \delta\twonorm{K^\star_k-K} \forall \twonorm{K^\star_k-K}\leq \epsilon_\delta
+\end{equation}
+This tells us that nearby control laws are also stabilizing.
+
+\subsection{Proof: bounding estimation error}
+We now need to show that $s_{k+1} \leq s_k$ if the policy estimation is chosen to be large enough, i.e., if we estimate a sufficiently accurate enough $Q$-factor, one of the estimation error or the performance must improve. \\ \\
+We first define $v_k = \twonorm{\theta_{k-1}-\hat{\theta}_{k-1}}$; then, applying the inequality of Lemma 2 we have for all $k$:
+\begin{equation}\label{eq:22}
+v_k \leq \epsilon_N(v_{k-1} + \twonorm{\theta_{k-1}-\theta_{k-2}})
+\end{equation}
+where recall that $\epsilon_N\to 0$ as $N\to\infty$.\\ \\
+We now recall that by our induction assumption that $s_{i} \leq \bar{s}_{0}<\infty$ for all $0 \leq i \leq k$, we immediately conclude that
+\begin{itemize} 
+    \item $v_{k-1}=\left\|\theta_{k-2}-\hat{\theta}_{k-2}\right\|_{2} \leq \bar{s}_{0}$
+    \item $\left\|\theta_{k-1}-\theta_{k-2}\right\|_{2} \leq \kappa_{1}$ for some constant $\kappa_{1}$.
+\end{itemize}
+This follows because $K_i$ is stabilizing for $0 \leq i \leq k$ and hence the induce Q-functions, and corresponding parameters $\theta_{i}=\Theta\left(Q_{i}\right)$ must be bounded. From this we can therefore write 
+\begin{equation}\label{eq:23}
+v_k \leq \epsilon_N(\bar{s}_0+\kappa_1)=\frac{1}{\epsilon_0 N \sigma_0}(\bar{s}_0+\kappa_1).
+\end{equation}
+which can be made arbitrarily small by choosing the estimation interval $N$ to be sufficiently large. \\ \\ 
+We then define $K^\star_k$ to be a one-step policy iteration using the correct $Q$-function, i.e., $K^\star_k = - (Q^\star_{k-1}(2,2))^{-1}(Q^\star_{k-1}(1,2))^\top$, and let $K_k$ be the one-step policy iteration using the estimated $Q$-function, i.e., $K_k = - (\hat Q_{k-1}(2,2))^{-1}(\hat Q_{k-1}(1,2))^\top$. We can note that if $N$ is sufficiently large, then $\hat Q_{k-1}(2,2)$ is invertible.
+\newpage
+This leads us to conclude that 
+\begin{equation}\label{eq:24}
+\twonorm{K_k-K^\star_k}\leq \bar{\kappa}_0(1+\twonorm{\hat{\theta}_{k-1}})\twonorm{\theta_{k-1}-\hat{\theta}_{k-1}}
+\end{equation}
+for some $\bar{\kappa}_0>0$, for $N$ sufficiently large. \\ \\ 
+Now since everything is bounded, we can further simplify this expression and write:
+\begin{equation}\label{eq:25}
+\left\|K_{k}-K_{k}^{\star}\right\|_{2} \leq \kappa_{0}\left\|\theta_{k-1}-\hat{\theta}_{k-1}\right\|_{2}=\kappa_{0} v_{k} \leq \epsilon_{N} \kappa_{0}\left(\bar{s}_{0}+\kappa_{1}\right)
+\end{equation}
+where we used out previously derived bound on $v_k$. \\ \\
+From equation \eqref{eq:21} we can see that:
+\begin{equation} \label{eq:26}
+    |\sigma(K_k)-\sigma(K^\star_k)|\leq \delta\twonorm{K_k-K^\star_k} \forall N \text{ s.t. } \epsilon N \kappa_0(\bar{s}_0 + \kappa_1)\leq \epsilon_\delta
+\end{equation}
+This implies that $K_k$ is stabilizing if $N$ is large enough, and achieves performance similar to that achieved by $K_k^\star$. Similarly, if we pick an even larger $N_1$, then this also holds true for $K_{k-1}$, allowing us to conclude that there exists a constant $\bar \delta$ such that
+\begin{equation} \label{eq:27}
+|\sigma(K_k) - \sigma(K_{k-1})|\leq \bar \delta\twonorm{K_k - K_{k-1}} \text{ for all $N \geq N_1$.}
+\end{equation}
+As the paper \cite{Brad94} explains: "In other words, if the estimation interval is long enough, then the difference between two consecutive costs is bounded by the difference between two consecutive controls. We use the definition of the parameter estimation vector to write, for $\delta_1$ a constant:"
+\begin{equation}\label{eq:28}
+    \twonorm{\theta_{k-1}-\theta_{k-2}}\leq \delta_1\twonorm{K_k-K_{k-1}}^2 \ \forall N \geq N_1.
+\end{equation}
+This can be explained given a Q-Factor, if we optimize a set $u^{\star}=-Q^{-1}(2,2) Q(1,2)^{\top} x=: K x$ we obtain the value function $J(x)=x^{\top}\left(Q(1,1)-K^{\top} Q(2,2) K\right) x$ which is quadratic in $K$.
+\\ \\
+We now can use the quadratic inequality $(a+b)^{2} \leq 2\left(a^{2}+b^{2}\right)$ to get:
+\begin{equation}\label{eq:29}
+\begin{split}
+    \twonorm{\theta_{k-1}-\theta_{k-2}} & \leq 2\delta_1\left(\twonorm{K_k^\star - K_{k-1}}^2 + \twonorm{K_k^\star - K_k}^2\right) \\
+                                    & \leq 2\delta_1(w_k^2 + (\kappa_0 v_k)^2) \\
+                                    & \leq 2\delta_1(w_k^2 + (\kappa_0 v_k))
+\end{split}
+\end{equation}
+Recalling our recursion on $v_{k}=\left\|\theta_{k-1}-\hat{\theta}_{k-1}\right\|_{2}$ we also have:
+\begin{equation}\label{eq:30}
+    v_{k} \leq \epsilon_{N}\left(v_{k-1}+\left\|\theta_{k-1}-\theta_{k-1}\right\|_{2}\right) \leq \epsilon_{N}\left(v_{k-1}+2 \delta_{1}\left(w_{k}^{2}+\kappa_{0} v_{k}\right)\right)
+\end{equation}
+We can now rearrange our equations to obtain:
+\begin{equation}\label{eq:31}
+    v_{k} \leq \frac{\epsilon_{N}}{1-2 \delta_{1} \kappa_{0} \epsilon_{N}}\left(v_{k-1}+2 \delta_{1} w_{k}^{2}\right)
+\end{equation}
+Making sure that $\epsilon_{N} \rightarrow 0 \text { as } N \rightarrow 0$, we see that $v_k$ can be made to converge to 0 so long as $w_{k}^{2}=\left\|K_{k}^{\star}-K_{k-1}^{2}\right\|_{2}$ is well-behaved.
+\\ \\
+By noticing that $\sigma(K_k)-\sigma(K_{k-1})=\sigma(K_k^\star)-\sigma(K_{k-1})+\sigma(K_k)-\sigma(K_k^\star)$. We can now use the continuity of cost of (Lemma 1) and previous bounds to conclude that id we choose our update interval N to be sufficiently large, then there exists positive constants $\Delta$ and $\delta_2$ such that:
+\begin{equation} \label{eq:32}
+\begin{split}
+\sigma(K_k) - \sigma(K_{k-1}) &\leq -\Delta \twonorm{K_k^\star-K_{k-1}}^2+\delta_2\twonorm{K_k^\star-K_k}^2 \\
+&\leq -\Delta \twonorm{K_k^\star-K_{k-1}}^2+\delta_2\twonorm{\theta_{k-1}-\hat{\theta}_{k-1}}^2 \\
+&\leq -\Delta w_k ^2+\delta_2\kappa_0 v_k
+\end{split}
+\end{equation}
+
+\subsection{Proof: putting it all together}
+Finally by combining the estimation error and cost recursions (setting them to equality) we define the system such as: 
+\begin{equation}\label{eq:33}
+    \left[\begin{array}{c}{v_{k}} \\ {\sigma\left(K_{k}\right)}\end{array}\right]=\left[\begin{array}{cc}{\frac{\epsilon_{N}}{1-2 \delta_{1} \kappa_{0} \epsilon_{N}}} & {0} \\ {\delta_{2} \kappa_{0} \frac{\epsilon_{N}^{\epsilon}}{1-2 \delta_{1} \kappa_{0} \epsilon_{N}}} & {1}\end{array}\right]\left[\begin{array}{c}{v_{k-1}} \\ {\sigma\left(K_{k-1}\right)}\end{array}\right]+\left[\begin{array}{c}{2 \frac{\epsilon_{N}}{1-2 \delta_{1} \kappa_{0} \epsilon_{N}} \delta_{2}} \\ {-\Delta+2 \delta_{2} \kappa_{0} \frac{\epsilon_{N}}{1-2 \delta_{1} \kappa_{0} \epsilon_{N}}}\end{array}\right] w_{k}^{2}
+\end{equation}
+We now recall our Lyapunov function $s_k = \sigma(K_k) + \twonorm{\theta_{k-2}-\hat{\theta}_{k-2}} = \sigma(K_k)-v_{k-1}$. Combining this with equation \eqref{eq:33} above we then have:
+\begin{equation}\label{eq:34}
+    s_{k+1} = s_k + (-1 + \frac{\epsilon_N}{1-2\delta_1\kappa_0\epsilon_N}(1+\delta_2 \kappa_0))v_{k-1} + (-\Delta + 2\frac{\epsilon_N}{1-2\delta_1\kappa_0\epsilon_N} \delta_2(1+\kappa_0))w_k^2.
+\end{equation}
+One can now notice that $v_{k-1}$ and $w_k^2$ are non-negative, hence it suffices to pick $N$ large enough to ensure that the coefficients in front of them are non-positive to ensure that $s_{k+1}\leq s_k$.
+
+
+
+\newpage
+\begin{thebibliography}{unsrt}
+    \bibitem{Sutton}
+        Richard S. Sutton and Andrew G. Barto: \emph{Reinforcement Learning: An Introduction} (The MIT Press Cambridge, Massachusetts, London, England)
+    \bibitem{Brad94}
+        S.J. Bradtke, B.E. Ydstie, \& A.G. Barto: \emph{Adaptive linear quadratic control using policy iteration} (Proceedings of 1994 American Control Conference - ACC '94).
+    \bibitem{QConvergence}
+        Francisco S. Melo \& M. Isabel Ribeiro\emph{Convergence of Q-learning with linear function approximation} (Proceedings of the European Control Conference 2007 Kos, Greece, July 2-5, 2007)
+\end{thebibliography}
+
+
+\end{document}
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+# jemdoc: menu{MENU}{jobmaterial.html}
+= Nikolai Matni -- Job Application Material \n
+Electrical Engineering and Computer Science, UC Berkeley
+
+I am currently on the academic job market: please find my application material below.
+
+- *[files/research-statement.pdf Research Statement]*
+- *[files/teaching-statement.pdf Teaching Statement]*
+- *[files/nikolai_matni_cv.pdf Curriculum Vitae]*
+
+== Representative Papers
+
+- S. Dean, H. Mania, *N. Matni*, B. Recht and S. Tu, /[https://arxiv.org/abs/1710.01688 On the Sample Complexity of the Linear Quadratic Regulator]/, Journal of Foundations of Computational Mathematics (FoCM), Accepted with Minor Revisions.\n
+Describes a contemporary approach that merges techniques from statistical learning theory and robust/optimal control, providing baselines delineating the possible control performance achievable given a fixed amount of data collected about the system.
+
+- S. Dean, H. Mania, *N. Matni*, B. Recht and S. Tu, /[https://arxiv.org/abs/1805.09388 Regret Bounds for the Robust Adaptive Control of the Linear Quadratic Regulator]/, 32nd Conference on Neural Information Processing Systems (NeurIPS), 2018.
+Defines and analyzes the first model-based reinforcement learning algorithm that is poly-time computable for the linear quadratic regulator guaranteeing (a) robust and stable execution throughout, (b) identification of the true model parameters, and (c) sub-linear regret of O(T^{2/3}).
+
+- Y.-S. Wang, *N. Matni* and J. C. Doyle, /[https://arxiv.org/abs/1610.04815 A System Level Approach to Controller Synthesis]/, IEEE Transactions on Automatic Control, 2018. Accepted.
+\n
+Describes a novel convex parameterization of stabilizing controllers that enables, among other things, convex synthesis of large-scale robust and optimal controllers.  The conference version of this paper was awarded the *ACC 2017 Best Student Paper Award*.
+
+- N. Wu, Y. Bi, N. Michael, A. Tang, J. C. Doyle and *N. Matni*, /[https://nikolaimatni.github.io/papers/In-Network-Congestion-Management-ToN.pdf A Control-Theoretic Approach to In-Network Congestion Management]/, IEEE Transactions on Networking, 2017. Submitted. \n
+Describes a novel software-defined networking based approach to in-network congestion management wherein network-scale coordination of buffer egress rates is achieved using distributed optimal control.  Includes experimental validation of the proposed method in a custom experimental testbet, a production WAN, and a Mininet emulation of a backbone network.
+
+- *N. Matni* and V. Chandrasekaran, /[http://ieeexplore.ieee.org/document/7378905/ Regularization for Design]/, IEEE Transactions on Automatic Control, 2016.
+ \n
+Describes a convex programming based approach to controller architecture design for distributed optimal controllers.  By drawing connections to the structured inference and statistics literature, we provide conditions under which our convex approach identifies optimally structured controllers.  A precursor to this paper was awarded the *CDC 2013 Best Student Paper Award*.
+
+~~~
+{}{raw}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49484039-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-49484039-2');
+</script>
+~~~

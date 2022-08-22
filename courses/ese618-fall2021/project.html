@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>ESE 618, Fall 2021 &ndash; Final Project</title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">Nikolai Matni</div>
+<div class="menu-item"><a href="index.html">home</a></div>
+<div class="menu-item"><a href="publications.html">publications</a></div>
+<div class="menu-item"><a href="people.html">people</a></div>
+<div class="menu-item"><a href="https://github.com/unstable-zeros">unstable&nbsp;zeros</a></div>
+<div class="menu-item"><a href="cdc2019tutorial.html">CDC&nbsp;2019&nbsp;Tutorial</a></div>
+<div class="menu-item"><a href="about.html">about&nbsp;me</a></div>
+<div class="menu-category">Teaching</div>
+<div class="menu-item"><a href="./courses/ese618-fall2021/index.html">ESE&nbsp;618</a></div>
+<div class="menu-item"><a href="./courses/ese605-spring2021/index.html">ESE&nbsp;605</a></div>
+<div class="menu-item"><a href="./courses/ese680-fall2019/index.html">ESE&nbsp;680</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>ESE 618, Fall 2021 &ndash; Final Project</h1>
+</div>
+<p>The final project structure and evaluation criteria are inspired by <a href="https://wensun.github.io/CS6789projects.html">CS6789</a> at Cornell.</p>
+<h2>Important Dates</h2>
+<ul>
+<li><p><b>Project proposal due 10/01</b></p>
+</li>
+<li><p><b>Midterm report due: 11/22</b></p>
+</li>
+</ul>
+<p>Tentative due dates:</p>
+<ul>
+<li><p>Final report due: 12/22</p>
+</li>
+</ul>
+<h2>Grading</h2>
+<ul>
+<li><p>Project proposal: 5%</p>
+</li>
+<li><p>Midterm report: 10%</p>
+</li>
+<li><p>Final report due: 25%</p>
+</li>
+</ul>
+<h2>Reports</h2>
+<ul>
+<li><p><b>Report Format:</b> we will use <a href="https://www.l4dc.org">L4DC</a> (PMLR) format. You must use the <a href="https://l4dc.ethz.ch/wp-content/uploads/2021/04/l4dc.zip">L4DC LaTex format</a>.</p>
+</li>
+</ul>
+<ul>
+<li><p><b>Project proposal:</b> Your proposal should be 2 pages maximum (not including references), and should include title, team members, abstract, related works, problem formulation and goals.</p>
+</li>
+</ul>
+<ul>
+<li><p><b>Midterm Report:</b> Your report should be 4 pages maximum (not including references). Your midterm report should build on your project proposal, and outline your solution approach, current progress and preliminary results, as well as highlight challenges that you are facing.</p>
+</li>
+</ul>
+<ul>
+<li><p><b>Final Report:</b> Your report should be 10 pages maximum (not including references and supplementary material). Your final report will be evaluated by the following criteria:</p>
+<ul>
+<li><p><b>Merit:</b> Is your problem formulation and solution strategy well-motivated?  Can you justify the complexity-level of your approach?</p>
+</li>
+<li><p><b>Technical depth:</b> Is your project technically challenging? Did you write your own code, or did you use a available software packages?  While it is ok for a project to lean more towards theory or implementation, the sum of theoretical + implementation efforts should remain consant (i.e., if you use existing software packages rather than write your own code, the theoretical component of your project should be more ambitious).</p>
+</li>
+<li><p><b>Presentation:</b> Are your solution approach, assumptions, results, and interpretations of experimental<i>theoretical outcomes clearly explained and</i>or justified?  Is the report clearly and written? Are the mathematical arguments rigorous and easy to follow? Are graphs/visualizations clear? </p>
+</li>
+</ul>
+
+</li>
+</ul>
+<h2>Project Ideas</h2>
+<p>We provide a few project ideas below. Studying existing &ldquo;L4DC&rdquo; theory papers and reproducing proofs is also a good option for the course project.  Numerical experiments used to verify conclusions or test conjectures are encouraged.</p>
+<ul>
+<li><p>Learning to control the Linear Quadratic Regulator: Conduct a survey on results characterizing regret bounds for linear quadratic optimal control, e.g., <a href="https://arxiv.org/abs/1805.09388">Dean et al.</a>, <a href="https://arxiv.org/abs/1902.07826">Mania et al.</a>, <a href="https://arxiv.org/abs/2001.09576">Simchowitz & Foster</a>.</p>
+</li>
+</ul>
+<ul>
+<li><p>System identification for partially observed systems: Understand and survey how non-asymptotic guarantees for partially observed systems can be obtained, e.g., <a href="https://arxiv.org/abs/1902.00768">Simchowitz et al.</a>, <a href="https://arxiv.org/abs/1806.05722">Oymak & Ozay</a>. Can you integrate these results methods from low-rank matrix recovery, e.g. <a href="https://epubs.siam.org/doi/abs/10.1137/070697835">Recht et al.</a>?</p>
+</li>
+</ul>
+<ul>
+<li><p>Learning Kalman Filters from data: Conduct a survey on results characterizing the sample-complexity and/or online regret incurred when learning Kalman Filters from data, e.g., <a href="https://arxiv.org/abs/1903.09122">Tsiamis & Pappas</a>, <a href="https://arxiv.org/abs/2002.05141">Tsiamis & Pappas</a>.  Can you integrate these results with learning LQR results for bounds on LQG synthesis, e.g. <a href="https://arxiv.org/abs/1902.07826">Mania et al.</a>?</p>
+</li>
+</ul>
+<ul>
+<li><p>System identification for sparse systems: Conduct a survey on results characterizing the sample-complexity of learning linear systems that have additional structure (e.g., sparse A and B matrices, as in <a href="https://arxiv.org/abs/1904.09396">Fattahi et al.</a>, <a href="https://arxiv.org/abs/1011.0415">Bento et al.</a>.   Can you prove similar results for other types of useful structure? Can you extend these methods to scale favorably with system spectral radius?</p>
+</li>
+</ul>
+<ul>
+<li><p>Non-traditional control metrics: Conduct a survey and comparison of results on novel linear control metrics such as non-stochastic control e.g., <a href="https://arxiv.org/abs/1911.12178">Hazan et al.</a>, regret-optimal control, e.g., <a href="https://arxiv.org/abs/2010.10473">Goel & Hassibi</a>, and competitive control, e.g., <a href="https://arxiv.org/abs/2107.13657">Goel & Hassibi</a>, <a href="https://arxiv.org/abs/2106.09659">Li et al.</a>.  Can you cook up other interesting control metrics and solve for controllers that optimize for them?</p>
+</li>
+</ul>
+<ul>
+<li><p>Learning in constrained linear systems: Conduct a survey of results relating to learning to control constrained linear systems, e.g., <a href="https://arxiv.org/abs/1809.10121">Dean et al.</a>, <a href="https://arxiv.org/abs/2010.04891">Li et al.</a>.  Can you extend these results to classes of nonlinear systems?</p>
+</li>
+</ul>
+<ul>
+<li><p>Safe learning in nonlinear systems: Lyapunov and Barrier methods have proven to be effective tools in guaranteeing stability and safety for nonlinear control affine systems, e.g., <a href="https://arxiv.org/abs/1705.08551">Berkenkamp et al.</a>, <a href="https://arxiv.org/abs/1912.10099">Taylor et al.</a>.  Can you provide regret bounds for safe learning and control?</p>
+</li>
+</ul>
+<ul>
+<li><p>System identification for nonlinear systems: Conduct a survey on papers aimed at providing sample-complexity bounds for nonlinear system <a href="https://arxiv.org/abs/1809.03019">Oymak</a>, <a href="https://arxiv.org/abs/2006.10277">Mania et al.</a>, <a href="https://arxiv.org/abs/2002.08538">Sattar & Oymak</a>, <a href="https://arxiv.org/abs/2004.14681">Foster et al.</a>, <a href="https://arxiv.org/abs/1908.09915">Bahmani & Romberg</a></p>
+</li>
+</ul>
+<ul>
+<li><p>Contraction metrics in control: Conduct a survey on papers that use tools from contraction theory for the analysis/design of learning algorithms for nonlinear systems, e.g., <a href="https://arxiv.org/abs/1907.13122">Singh et al.</a>, <a href="https://arxiv.org/abs/2011.13101">Boffi et al.</a>, <a href="https://arxiv.org/abs/2011.12569">Sun et al.</a>, <a href="https://arxiv.org/abs/2102.09161">Tu et al.</a>.  Can you apply these ideas in other contexts?</p>
+</li>
+</ul>
+<ul>
+<li><p>Policy optimization methods: conduct a survey on results showing that direct policy optimization is effective for linear optimal control, e.g., <a href="https://arxiv.org/abs/1801.05039">Fazel et al.</a>, <a href="https://viterbi-web.usc.edu/~mihailo/papers/mohzarsoljovCDC19.pdf">Mohammadi et al.</a>, <a href="https://arxiv.org/abs/2102.04393">Zheng et al.</a>, <a href="https://arxiv.org/abs/1910.09496">Zhang et al.</a>.  Can you extend these ideas to a class of nonlinear systems?</p>
+</li>
+</ul>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49484039-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-49484039-2');
+</script>
+
+<div id="footer">
+<div id="footer-text">
+Page generated 2021-11-04 13:19:14 EDT, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
