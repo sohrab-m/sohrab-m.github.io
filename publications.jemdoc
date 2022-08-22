@@ -4,7 +4,6 @@ Electrical and Systems Engineering, University of Pennsylvania
 
 Please see my [https://scholar.google.com/citations?user=ZDPCh_EAAAAJ&hl=en Google Scholar] page for citations.
 
-We release all code needed to reproduce examples in papers originating from our group on the [https://github.com/unstable-zeros Unstable Zeros] github repo.
 
 == Journals
 ~~~
@@ -361,31 +360,6 @@ B. Recht, and S. Tu, <a href="https://arxiv.org/abs/1805.09388">Regret Bounds fo
                     <p style="text-indent: -15px; " class="paragraph_style_1"><span style="font-size: 14px; " class="Bullet"></span>N. Matni and M. Oishi, <a title="http://www.ece.ubc.ca/~moishi/publications/acc08.pdf" href="http://www.ece.ubc.ca/~moishi/publications/acc08.pdf">Reachability-based abstraction for an aircraft landing under shared control</a>, <span class="style_2">In the </span>Proceedings of the American Control Conference<span class="style_2">, Seattle, WA, June 2008.</span><span style="line-height: 17px; " class="style_4"><br /></span></p>
                   </li>
                 </ul>
-~~~
-
-== Patents
-~~~
-{}{raw}
- <ul>
-                      <li style="line-height: 17px; padding-left: 20px; text-indent: -15px; " class="full-width" value="1">
-                        <p style="text-indent: -15px; " class="paragraph_style_1">CIT 7323 Data Network Controlled and Optimized Using Layered Architectures: Nikolai Matni and John C. Doyle.<br /></p>
-                    </li>
-                      
-                      <li style="line-height: 17px; padding-left: 20px; text-indent: -15px; " class="full-width" value="1">
-                        <p style="text-indent: -15px; " class="paragraph_style_1"> CIT 14-135 Designing Combination Therapies for Interacting Drugs and Nonlinear Pharmacodynamics for Evolutionary Dynamics of Disease using Optimal Control: Vanessa Jonsson, Nikolai Matni, Anders Rantzer and Bo Bernhardsson.<br /></p>
-                    </li>
-                      </ul> 
-
-~~~
-
-== Working notes
-~~~
-{}{raw}
-               <ul>
-                      <li style="line-height: 17px; padding-left: 20px; text-indent: -15px; " class="full-width" value="1">
-                        <p style="text-indent: -15px; " class="paragraph_style_1"> N. Matni and A. Rantzer, <a title="http://arxiv.org/abs/1403.7175" href="http://arxiv.org/abs/1403.7175">Low-Rank and Low-Order Decompositions for Local System Identification</a><br /></p>
-                    </li>
-                      </ul> 
 ~~~
 
 ~~~
