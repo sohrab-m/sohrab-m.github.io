@@ -12,7 +12,7 @@ Electrical and Computer Engineering, University of Illinois at Urbana-Champaign
     Suraj Jog, Junfeng Guan, *Sohrab Madani*, Songbin Gong, Deepak Vasisht, Haitham Hassanieh et.al. \n
   \[[./papers/nsdi22_ISLA.pdf PDF]\], \[[./papers/jog_nsdi22_isla.pdf Slides]\], \[[https://www.youtube.com/watch?v=f2nRNkxNr88 Video]\]
 - \[*NSDI '21*\] *Practical Null Steering in Millimeter Wave Networks* \n
-    *Sohrab Madani*, Suraj Jog, Haitham Hassanieh \n
+    *Sohrab Madani*, Suraj Jog,  Jesus Omar Lacruz, Joerg Widmer, Haitham Hassanieh \n
     \[[./papers/nsdi21_madani.pdf PDF]\],
      \[[nsdi21_slides_madani Slides]\],
       \[[https://www.youtube.com/watch?v=-kH7qMrV8B0&ab_channel=USENIX Video]\],
@@ -21,7 +21,7 @@ Electrical and Computer Engineering, University of Illinois at Urbana-Champaign
     Unsoo Ha\*, *Sohrab Madani*\*, Fadel Adib \n
     \[[https://dl.acm.org/doi/pdf/10.1145/3478121 PDF]\]
 - \[*CVPR '20*\] *Through Fog High Resolution Imaging Using Millimeter Wave Radar* \n
-    Junfeng Guan, *Sohrab Madani*, Suraj Jog, Jesus Omar Lacruz, Joerg Widmer, Haitham Hassanieh \n
+    Junfeng Guan, *Sohrab Madani*, Suraj Jog, Haitham Hassanieh \n
     \[[./papers/cvpr2020_hawkeye.pdf PDF]\], 
     \[[https://jguan.page/HawkEye/ Website]\], 
     \[[https://gi`thub.com/JaydenG1019/HawkEye-Data-Code Git]\]\n
